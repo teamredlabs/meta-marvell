@@ -31,7 +31,7 @@ do_compile () {
 
 	export CROSS_COMPILE=${TARGET_PREFIX}
 
-	if [ "${UBOOT_MARVELL_MACHINE}" == "armada_38x_clearfog" ]
+	if [ "${UBOOT_MARVELL_MACHINE}" = "armada_38x_clearfog" ]
 	then
 		make ${UBOOT_MARVELL_MACHINE}_config
 		make u-boot.mmc
