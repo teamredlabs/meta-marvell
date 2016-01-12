@@ -20,8 +20,10 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 do_compile () {
 	unset LDFLAGS
-	unset CFLAGS
-	unset CPPFLAGS
+
+	export CROSS_COMPILE=${TARGET_PREFIX}
+	export CROSS_COMPILE_BH=${TARGET_PREFIX}
+	export USE_PRIVATE_LIBGCC=${STAGING_LIBDIR}/${TARGET_SYS}/`$CC -dumpversion`
 
 	if [ ! -e ${B}/.scmversion -a ! -e ${S}/.scmversion ]
 	then
