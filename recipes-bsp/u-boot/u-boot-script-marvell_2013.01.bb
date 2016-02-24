@@ -37,5 +37,7 @@ addtask deploy after do_install before do_build
 
 do_compile[noexec] = "1"
 
+RPROVIDES_${PN} += "u-boot-script"
+
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 COMPATIBLE_MACHINE_armada38x = "${MACHINE}"
