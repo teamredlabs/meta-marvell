@@ -23,7 +23,7 @@ MACHINE_ESSENTIAL_EXTRA_RDEPENDS += " \
     u-boot-script \
 "
 
-IMAGE_FSTYPES += "tar.bz2 ext2"
+IMAGE_FSTYPES += "tar.bz2 ext2 wic.gz"
 
 SERIAL_CONSOLE = "115200 ttyS0"
 
@@ -32,5 +32,8 @@ KERNEL_IMAGETYPE = "zImage"
 
 UBOOT_SUFFIX = "bin"
 UBOOT_MACHINE = "armada_38x_config"
+
+WKS_FILES_append_armada38x = " armada38x.wks"
+IMAGE_DEPENDS_wic_append_armada38x = " virtual/bootloader"
 
 MACHINE_FEATURES = "ext2 ipsec nfs pci smbfs usbgadget usbhost vfat"
