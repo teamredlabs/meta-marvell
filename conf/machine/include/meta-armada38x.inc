@@ -4,7 +4,7 @@ MACHINEOVERRIDES =. "armada38x:"
 MACHINE_EXTRA_RRECOMMENDS += "kernel-modules"
 
 # boot.scr, DTB, and uImage are required for booting
-MACHINE_ESSENTIAL_EXTRA_RDEPENDS += "kernel-image kernel-devicetree u-boot-script-dev"
+MACHINE_ESSENTIAL_EXTRA_RDEPENDS += "kernel-image kernel-devicetree u-boot-script-marvell"
 
 # Build U-Boot as part of a final image, even though it does not affect the RFS
 EXTRA_IMAGEDEPENDS += "u-boot"
