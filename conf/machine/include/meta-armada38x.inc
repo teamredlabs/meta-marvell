@@ -20,7 +20,7 @@ SERIAL_CONSOLE = "115200 ttyS0"
 PREFERRED_PROVIDER_virtual/kernel ?= "linux-yocto-custom"
 KERNEL_IMAGETYPE = "zImage"
 
-PREFERRED_PROVIDER_u-boot = "u-boot-armada38x"
+PREFERRED_PROVIDER_u-boot = "u-boot-marvell"
 UBOOT_SUFFIX = "bin"
 UBOOT_MACHINE = "armada_38x_config"
 

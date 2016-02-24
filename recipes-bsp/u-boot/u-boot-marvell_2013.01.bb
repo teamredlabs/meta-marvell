@@ -3,20 +3,23 @@ require recipes-bsp/u-boot/u-boot.inc
 DESCRIPTION = "U-Boot for Marvell Armada 38x"
 LICENSE = "GPLv2+"
 LIC_FILES_CHKSUM = "file://README;md5=90fb5e9af37e63370e37e9a9178cc427"
-COMPATIBLE_MACHINE_armada38x = "armada38x"
 
-PROVIDES = "u-boot"
+PROVIDES += "u-boot"
 
-PV = "${UBOOT_VERSION}-${UBOOT_MARVELL_VERSION}"
-S = "${WORKDIR}/u-boot-${UBOOT_VERSION}/"
+SRC_URI = "git://git@github.com/MarvellEmbeddedProcessors/u-boot-marvell;branch=${SRCBRANCH};protocol=https \
+           file://u-boot-2013.01_hard_vfp.patch \
+           file://u-boot-2013.01_default_bootcmd.patch \
+"
 
-# Support for fetching and building U-Boot from Marvell GitHub
-require u-boot-armada38x/source-github.inc
+SRCBRANCH_armada38x = "u-boot-2013.01-15t1"
+SRCREV_armada38x = "b21a7137318cdccd1d6569c27dddd33447328770"
 
-# Support for building U-Boot downloaded from Marvell Extranet
-#require u-boot-armada38x/source-extranet.inc
+SRCBRANCH_clearfog = "u-boot-2013.01-15t1-clearfog"
+SRCREV_clearfog = "c1d6f3e8e315c3843147c74013ed915231774a58"
 
-PACKAGE_ARCH = "${MACHINE_ARCH}"
+PV .= "+git${SRCPV}"
+
+S = "${WORKDIR}/git"
 
 do_compile () {
 	unset LDFLAGS
@@ -43,3 +46,6 @@ do_compile () {
 		cp -f u-boot-a38x-yocto-spi.bin u-boot.bin
 	fi
 }
+
+COMPATIBLE_MACHINE = "(armada38x)"
+PACKAGE_ARCH = "${MACHINE_ARCH}"
