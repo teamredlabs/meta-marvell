@@ -23,8 +23,7 @@ MACHINE_ESSENTIAL_EXTRA_RDEPENDS += " \
     u-boot-script \
 "
 
-IMAGE_FSTYPES += "tar.bz2 ext2 sdcard"
-IMAGE_CLASSES += "image_types_marvell"
+IMAGE_FSTYPES += "tar.bz2 ext2"
 
 SERIAL_CONSOLE = "115200 ttyS0"
 
