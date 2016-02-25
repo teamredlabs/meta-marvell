@@ -17,7 +17,7 @@ IMAGE_CLASSES += "image_types_marvell"
 
 SERIAL_CONSOLE = "115200 ttyS0"
 
-PREFERRED_PROVIDER_virtual/kernel ?= "linux-yocto-custom"
+PREFERRED_PROVIDER_virtual/kernel ?= "linux-marvell"
 KERNEL_IMAGETYPE = "zImage"
 
 PREFERRED_PROVIDER_u-boot = "u-boot-marvell"
