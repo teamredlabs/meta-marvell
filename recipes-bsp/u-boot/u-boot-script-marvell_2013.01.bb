@@ -25,8 +25,10 @@ do_deploy () {
             ${DEPLOYDIR}/boot.scr
 
     cd ${DEPLOYDIR}
-    rm -f boot.scr-${MACHINE}
+    mv boot.scr boot.scr-${MACHINE}-${PV}-${PR}
     ln -sf boot.scr-${MACHINE}-${PV}-${PR} boot.scr-${MACHINE}
+    ln -sf boot.scr-${MACHINE}-${PV}-${PR} boot.scr
+
 }
 
 do_install () {
