@@ -22,5 +22,5 @@ fi;
 setenv bootargs console=ttyS0,115200 earlyprintk mtdparts=spi_flash:4m(boot),-(spi-rootfs) root=${rootpart} rw rootwait
 
 ext2load ${dev} 0 0x02000000 /zImage;
-ext2load ${dev} 0 0x01000000 /armada-388-customer1.dtb;
+ext2load ${dev} 0 0x01000000 /armada-388-clearfog.dtb;
 bootz 0x02000000 - 0x01000000;
