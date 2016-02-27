@@ -9,3 +9,5 @@ LOCALVERSION_armada38x = "-2015_T1.1p7"
 
 SRC_URI_append_armada38x = " file://enable-ftrace.cfg"
 SRC_URI_append_armada38x-be = " file://big-endian.cfg"
+
+COMPATIBLE_MACHINE = "(armada38x)"
