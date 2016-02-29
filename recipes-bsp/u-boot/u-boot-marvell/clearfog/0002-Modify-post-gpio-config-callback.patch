@@ -1,0 +1,48 @@
+From cf2544a5a427da3bc477c2b65757fbcf48e592e9 Mon Sep 17 00:00:00 2001
+From: Rabeeh Khoury <rabeeh@solid-run.com>
+Date: Mon, 2 Nov 2015 18:15:41 +0200
+Subject: [PATCH 2/3] Modify post gpio config callback
+Organization: O.S. Systems Software LTDA.
+
+GPIO callback to board specific function was implemented in the wrong place.
+Originally it was defined after gpios has been configured, but this is not good
+enough since the MPPs (pin muxing) hasn't been configured yet.
+
+This patch moves the call to the callback function after both GPIOs and MPPs
+has been configured.
+
+The bug was found when implementing resetting the on usom phy which uses
+GPIO19 (valid on ClearFog boards rev 2.1 and newer).
+
+Signed-off-by: Rabeeh Khoury <rabeeh@solid-run.com>
+---
+ board/mv_ebu/a38x/armada_38x_family/boardEnv/mvBoardEnvLib.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/board/mv_ebu/a38x/armada_38x_family/boardEnv/mvBoardEnvLib.c b/board/mv_ebu/a38x/armada_38x_family/boardEnv/mvBoardEnvLib.c
+index 7b87cee..f84c918 100644
+--- a/board/mv_ebu/a38x/armada_38x_family/boardEnv/mvBoardEnvLib.c
++++ b/board/mv_ebu/a38x/armada_38x_family/boardEnv/mvBoardEnvLib.c
+@@ -197,9 +197,6 @@ MV_VOID mvBoardEnvInit(MV_VOID)
+ 	mvGppTypeSet(1, 0xFFFFFFFF, board->gppOutEnValMid);
+ 	mvGppTypeSet(2, 0xFFFFFFFF, board->gppOutEnValHigh);
+ 
+-	/* Call callback function for board specific post GPP configuration */
+-	if (board->gppPostConfigCallBack)
+-		board->gppPostConfigCallBack(board);
+ }
+ 
+ /*******************************************************************************
+@@ -1526,6 +1523,9 @@ MV_VOID mvBoardConfigWrite(void)
+ 			i++;
+ 		}
+ 	}
++	/* Call callback function for board specific post GPP configuration */
++	if (board->gppPostConfigCallBack)
++		board->gppPostConfigCallBack(board);
+ }
+ 
+ /*******************************************************************************
+-- 
+2.7.1
+
