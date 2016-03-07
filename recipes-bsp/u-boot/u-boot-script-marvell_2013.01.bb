@@ -42,4 +42,4 @@ do_compile[noexec] = "1"
 RPROVIDES_${PN} += "u-boot-script"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
-COMPATIBLE_MACHINE_armada38x = "${MACHINE}"
+COMPATIBLE_MACHINE = "(armada38x)"
