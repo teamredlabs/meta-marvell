@@ -2,11 +2,7 @@
 
 require conf/machine/include/tune-cortexa9.inc
 
-MACHINE_ENDIANNESS ?= "le"
-
-DEFAULTTUNE_armada38x ?= "${@bb.utils.contains("MACHINE_ENDIANNESS", "le", \
-                                               "armv7ahf-neon", \
-                                               "armv7ahfb-neon", d)}"
+DEFAULTTUNE_armada38x ??= "armv7ahf-neon"
 
 MACHINEOVERRIDES =. "armada38x:"
 
