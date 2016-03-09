@@ -8,6 +8,8 @@ SRCREV_armada38x = "c8ae519736bba6de02ace596b438f14d168648ae"
 LOCALVERSION_armada38x = "-2015_T1.1p7"
 
 SRC_URI += "file://enable-ftrace.cfg \
-            ${@bb.utils.contains('TUNE_FEATURES', 'bigendian', 'file://big-endian.cfg',  '', d)}"
+            ${@bb.utils.contains('TUNE_FEATURES', 'bigendian', 'file://big-endian.cfg',  '', d)} \
+            file://0001-tools-cesa-Set-CC-and-LD-flags.patch \
+"
 
 COMPATIBLE_MACHINE = "(armada38x)"
