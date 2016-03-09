@@ -11,6 +11,9 @@ SRC_URI = "file://Makefile \
            file://COPYING \
           "
 
+export TOOLCHAIN_OPTIONS
+export HOST_CC_ARCH
+
 S = "${WORKDIR}"
 
 FILES_${PN} += "${bindir}/mv_cesa_tool"
