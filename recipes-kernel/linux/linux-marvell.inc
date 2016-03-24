@@ -17,7 +17,6 @@ require recipes-kernel/linux/linux-dtb.inc
 
 # Default repositories for each SoC family
 SRC_SRC_URI = "UNDEFINED"
-SOC_SRC_URI_armada38x = "git://github.com/MarvellEmbeddedProcessors/linux-armada38x.git;protocol=https"
 SRCBRANCH = "UNDEFINED"
 
 SRC_URI = "${SOC_SRC_URI};branch=${SRCBRANCH} \
