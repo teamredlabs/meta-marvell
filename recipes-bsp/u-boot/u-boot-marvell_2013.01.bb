@@ -9,6 +9,9 @@ PROVIDES += "u-boot"
 SRC_URI = "git://git@github.com/MarvellEmbeddedProcessors/u-boot-marvell;branch=${SRCBRANCH};protocol=https \
            file://u-boot-2013.01_hard_vfp.patch \
            file://u-boot-2013.01_default_bootcmd.patch \
+           file://Add-linux-compiler-gcc5.h-to-fix-builds-with-gcc5.patch \
+           file://arm-board-use-__weak.patch \
+           file://asm-io.h-fix-build-with-gcc5.patch \
 "
 
 SRCBRANCH_armada38x = "u-boot-2013.01-15t1"
@@ -28,6 +31,8 @@ S = "${WORKDIR}/git"
 
 do_compile () {
 	unset LDFLAGS
+	unset CFLAGS
+	unset CPPFLAGS
 
 	export CROSS_COMPILE=${TARGET_PREFIX}
 	export CROSS_COMPILE_BH=${TARGET_PREFIX}
@@ -44,7 +49,7 @@ do_compile () {
 	if [ "${UBOOT_MARVELL_MACHINE}" = "armada_38x_clearfog" ]
 	then
 		make ${UBOOT_MARVELL_MACHINE}_config
-		make u-boot.mmc
+		make u-boot.mmc CC="${TARGET_PREFIX}gcc ${TOOLCHAIN_OPTIONS} -fgnu89-inline"
 	else
 		export CROSS_COMPILE_BH=${TARGET_PREFIX}
 		perl build.pl -f spi -b ${UBOOT_MARVELL_MACHINE} -v "yocto" -i spi -c

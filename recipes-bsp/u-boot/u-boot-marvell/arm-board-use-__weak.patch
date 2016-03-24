@@ -1,0 +1,120 @@
+From 14efbb28bbb9bcce7092e6a39d773e6036ee5f34 Mon Sep 17 00:00:00 2001
+From: Otavio Salvador <otavio@ossystems.com.br>
+Date: Thu, 24 Mar 2016 14:05:10 -0300
+Subject: [PATCH 3/3] arm: board: use __weak
+Organization: O.S. Systems Software LTDA.
+
+Signed-off-by: Otavio Salvador <otavio@ossystems.com.br>
+---
+ arch/arm/lib/board.c | 72 ++++++++++------------------------------------------
+ 1 file changed, 13 insertions(+), 59 deletions(-)
+
+diff --git a/arch/arm/lib/board.c b/arch/arm/lib/board.c
+index c846256..9eede7e 100644
+--- a/arch/arm/lib/board.c
++++ b/arch/arm/lib/board.c
+@@ -81,52 +81,15 @@ extern int mvBoardNorFlashConnect(void);
+  ************************************************************************
+  * May be supplied by boards if desired
+  */
+-inline void __coloured_LED_init(void)
+-{
+-}
+-
+-void coloured_LED_init(void)
+-__attribute__((weak, alias("__coloured_LED_init")));
+-inline void __red_led_on(void)
+-{
+-}
+-
+-void red_led_on(void) __attribute__((weak, alias("__red_led_on")));
+-inline void __red_led_off(void)
+-{
+-}
+-
+-void red_led_off(void) __attribute__((weak, alias("__red_led_off")));
+-inline void __green_led_on(void)
+-{
+-}
+-
+-void green_led_on(void) __attribute__((weak, alias("__green_led_on")));
+-inline void __green_led_off(void)
+-{
+-}
+-
+-void green_led_off(void) __attribute__((weak, alias("__green_led_off")));
+-inline void __yellow_led_on(void)
+-{
+-}
+-
+-void yellow_led_on(void) __attribute__((weak, alias("__yellow_led_on")));
+-inline void __yellow_led_off(void)
+-{
+-}
+-
+-void yellow_led_off(void) __attribute__((weak, alias("__yellow_led_off")));
+-inline void __blue_led_on(void)
+-{
+-}
+-
+-void blue_led_on(void) __attribute__((weak, alias("__blue_led_on")));
+-inline void __blue_led_off(void)
+-{
+-}
+-
+-void blue_led_off(void) __attribute__((weak, alias("__blue_led_off")));
++__weak void coloured_LED_init(void) {}
++__weak void red_led_on(void) {}
++__weak void red_led_off(void) {}
++__weak void green_led_on(void) {}
++__weak void green_led_off(void) {}
++__weak void yellow_led_on(void) {}
++__weak void yellow_led_off(void) {}
++__weak void blue_led_on(void) {}
++__weak void blue_led_off(void) {}
+ 
+ /*
+  ************************************************************************
+@@ -242,35 +205,26 @@ static int arm_pci_init(void)
+  * argument, and returns an integer return code, where 0 means
+  * "continue" and != 0 means "fatal error, hang the system".
+  */
+-typedef int (init_fnc_t)(void);
++typedef int (init_fnc_t) (void);
+ 
+ int print_cpuinfo(void);
+ 
+-void __dram_init_banksize(void)
++__weak void dram_init_banksize(void)
+ {
+ 	gd->bd->bi_dram[0].start = CONFIG_SYS_SDRAM_BASE;
+ 	gd->bd->bi_dram[0].size =  gd->ram_size;
+ }
+ 
+-void dram_init_banksize(void)
+-__attribute__((weak, alias("__dram_init_banksize")));
+-
+-int __arch_cpu_init(void)
++__weak int arch_cpu_init(void)
+ {
+ 	return 0;
+ }
+ 
+-int arch_cpu_init(void)
+-__attribute__((weak, alias("__arch_cpu_init")));
+-
+-int __power_init_board(void)
++__weak int power_init_board(void)
+ {
+ 	return 0;
+ }
+ 
+-int power_init_board(void)
+-__attribute__((weak, alias("__power_init_board")));
+-
+ /* Record the board_init_f() bootstage (after arch_cpu_init()) */
+ static int mark_bootstage(void)
+ {
+-- 
+2.7.4
+
