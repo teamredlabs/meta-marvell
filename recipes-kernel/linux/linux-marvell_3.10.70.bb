@@ -10,6 +10,7 @@ LOCALVERSION_armada38x = "-2015_T1.1p7"
 
 SRC_URI += "file://enable-ftrace.cfg \
             ${@bb.utils.contains('TUNE_FEATURES', 'bigendian', 'file://big-endian.cfg',  '', d)} \
+            file://0001-ARM-8158-1-LLVMLinux-use-static-inline-in-ARM-ftrace.patch \
             file://0001-tools-cesa-Set-CC-and-LD-flags.patch \
 "
 
