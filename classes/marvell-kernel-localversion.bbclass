@@ -22,14 +22,13 @@ kernel_conf_variable() {
 	fi
 }
 
-do_configure_prepend() {
-	echo "" > ${B}/.config
+do_configure_append() {
 	CONF_SED_SCRIPT=""
+
+	sed -e "${CONF_SED_SCRIPT}" -i '${B}/.config'
 
 	kernel_conf_variable LOCALVERSION "\"${LOCALVERSION}\""
 	kernel_conf_variable LOCALVERSION_AUTO y
-
-	sed -e "${CONF_SED_SCRIPT}" < '${WORKDIR}/defconfig' >> '${B}/.config'
 
 	if [ "${SCMVERSION}" = "y" ]; then
 		# Add GIT revision to the local version
