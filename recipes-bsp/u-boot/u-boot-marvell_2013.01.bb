@@ -12,6 +12,7 @@ SRC_URI = "git://git@github.com/MarvellEmbeddedProcessors/u-boot-marvell;branch=
            file://Add-linux-compiler-gcc5.h-to-fix-builds-with-gcc5.patch \
            file://arm-board-use-__weak.patch \
            file://asm-io.h-fix-build-with-gcc5.patch \
+           file://0001-arm-Switch-to-mno-unaligned-access-when-supported-by.patch \
 "
 
 SRCBRANCH_armada38x = "u-boot-2013.01-15t1"
