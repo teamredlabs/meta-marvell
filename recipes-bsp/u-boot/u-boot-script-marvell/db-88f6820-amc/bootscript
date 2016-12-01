@@ -1,0 +1,26 @@
+setenv fdt_skip_update yes
+
+scsi init
+
+if ext2load scsi 0 0x02100000 /boot.scr; then
+  setenv rootpart /dev/sda2
+  setenv dev scsi
+else if ext2load usb 0 0x02100000 /boot.scr; then
+  if scsi device 0; then
+    setenv rootpart /dev/sdb2
+  else;
+    setenv rootpart /dev/sda2
+  fi;
+  setenv dev usb
+else if ext2load mmc 0 0x02100000 /boot.scr; then
+  setenv rootpart /dev/mmcblk0p2
+  setenv dev mmc;
+fi;
+fi;
+fi;
+
+setenv bootargs console=ttyS0,115200 earlyprintk mtdparts=spi_flash:4m(boot),-(spi-rootfs) root=${rootpart} rw rootwait
+
+ext2load ${dev} 0 0x02000000 /zImage;
+ext2load ${dev} 0 0x01000000 /armada-385-amc.dtb;
+bootz 0x02000000 - 0x01000000;
