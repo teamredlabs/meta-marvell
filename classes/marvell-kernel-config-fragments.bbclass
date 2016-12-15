@@ -31,6 +31,6 @@ def src_config_fragments(d):
 
 merge_fragment_pipeline = "cat"
 
-do_configure_append() {
+do_preconfigure_append() {
     merge_fragments ${B}/.config
 }
