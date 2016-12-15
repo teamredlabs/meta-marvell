@@ -6,5 +6,9 @@ SRCREV = "bccb35302bb18f66bfd5047c5a58b5ea5f3c1373"
 
 SRC_URI += "${@bb.utils.contains('TUNE_FEATURES', 'bigendian', 'file://big-endian.cfg',  '', d)}"
 
+SRC_URI_append_clearfog = " \
+    file://iptables.cfg \
+"
+
 COMPATIBLE_MACHINE = "(armada38x)"
 
