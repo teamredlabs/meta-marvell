@@ -27,7 +27,9 @@ do_configure_append() {
 
 	sed -e "${CONF_SED_SCRIPT}" -i '${B}/.config'
 
-	kernel_conf_variable LOCALVERSION "\"${LOCALVERSION}\""
+	LOCALVERSION=`cat ${S}/localversion`
+
+	kernel_conf_variable LOCALVERSION "\"$LOCALVERSION\""
 	kernel_conf_variable LOCALVERSION_AUTO y
 
 	if [ "${SCMVERSION}" = "y" ]; then
