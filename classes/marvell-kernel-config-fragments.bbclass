@@ -31,6 +31,10 @@ def src_config_fragments(d):
 
 merge_fragment_pipeline = "cat"
 
-do_configure_append() {
+do_preconfigure() {
+    mkdir -p ${B}
+    cp '${WORKDIR}/defconfig' '${B}/.config'
     merge_fragments ${B}/.config
 }
+
+addtask preconfigure before do_configure after do_patch
