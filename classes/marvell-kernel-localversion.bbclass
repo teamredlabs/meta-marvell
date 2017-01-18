@@ -29,6 +29,11 @@ do_configure_append() {
 
 	LOCALVERSION=`cat ${S}/localversion`
 
+	if [ -f ${S}/localversion-rt ]; then
+		LOCALVERSION_RT=`cat ${S}/localversion-rt`
+		LOCALVERSION=$LOCALVERSION$LOCALVERSION_RT
+	fi
+
 	kernel_conf_variable LOCALVERSION "\"$LOCALVERSION\""
 	kernel_conf_variable LOCALVERSION_AUTO y
 
