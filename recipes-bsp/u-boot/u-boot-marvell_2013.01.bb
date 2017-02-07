@@ -12,8 +12,8 @@ SRC_URI = " \
     file://0002-Revert-bin_header_debug-add-implementation-of-C-libr.patch \
 "
 
-SRCBRANCH = "u-boot-2013.01"
-SRCREV = "45fabe89310db3d8b3821bea55f84defe8f815c1"
+SRCBRANCH = "u-boot-2013.01-armada-17.02"
+SRCREV = "7afd4bf6a1abc3a9856871c014537beab9d0f664"
 
 PV .= "+git${SRCPV}"
 
