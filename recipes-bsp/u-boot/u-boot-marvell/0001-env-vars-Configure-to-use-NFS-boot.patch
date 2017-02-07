@@ -1,0 +1,53 @@
+From 0bef249a1e89ae12da79054e1cdf2b72c0cb4b41 Mon Sep 17 00:00:00 2001
+From: Fabio Berton <fabio.berton@ossystems.com.br>
+Date: Fri, 6 May 2016 10:25:47 -0300
+Subject: [PATCH] env-vars: Configure to use NFS boot
+Organization: O.S. Systems Software LTDA.
+
+  - Set default directory for NFS to /srv/nfs/rootfs.
+  - Create get_nfs variable.
+
+  To boot from nfs run:
+
+    run set_bootargs; run get_nfs
+
+Upstream-Status: Pending
+
+Signed-off-by: Fabio Berton <fabio.berton@ossystems.com.br>
+---
+ include/configs/mvebu-common.h | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/include/configs/mvebu-common.h b/include/configs/mvebu-common.h
+index 87266aa..032b6aa 100644
+--- a/include/configs/mvebu-common.h
++++ b/include/configs/mvebu-common.h
+@@ -153,7 +153,7 @@
+ /* Default Env vars */
+ #define CONFIG_SYS_BARGSIZE             CONFIG_SYS_CBSIZE       /* Boot Argument Buffer Size */
+ #define CONFIG_BOOTDELAY                3
+-#define CONFIG_ROOTPATH                 "/srv/nfs/"             /* Default Dir for NFS */
++#define CONFIG_ROOTPATH                 "/srv/nfs/rootfs"       /* Default Dir for NFS */
+ #define CONFIG_EXTRA_ENV_SETTINGS	"kernel_addr=0x2000000\0"	\
+ 					"initrd_addr=0xa00000\0"	\
+ 					"initrd_size=0x2000000\0"	\
+@@ -173,8 +173,15 @@
+ 					"console=" CONFIG_DEFAULT_CONSOLE "\0"					\
+ 					"root=root=/dev/nfs rw\0"						\
+ 					"set_bootargs=setenv bootargs $console $root "				\
++					"root_nfs=root=/dev/nfs rw\0" \
++					"set_bootargs=setenv bootargs $console $root_nfs " \
+ 						"ip=$ipaddr:$serverip:$gatewayip:$netmask:$hostname:$netdev:none "\
+-						"nfsroot=$serverip:$rootpath $extra_params"
++						"nfsroot=$serverip:$rootpath $extra_params\0" \
++					"get_nfs=" \
++						"tftpboot ${loadaddr} ${image_name}; " \
++						"tftpboot ${fdt_addr} ${fdt_name};" \
++						"booti ${loadaddr} - ${fdt_addr}"
++
+ 
+ #define CONFIG_BOOTCOMMAND		"run get_images; run set_bootargs; booti $kernel_addr $ramfs_addr $fdt_addr"
+ 
+-- 
+2.1.4
+

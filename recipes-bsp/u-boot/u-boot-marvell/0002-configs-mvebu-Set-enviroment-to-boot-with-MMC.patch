@@ -1,0 +1,42 @@
+From ce2add0e7192060e3f48ce77885ed3e052b7ccc4 Mon Sep 17 00:00:00 2001
+From: Fabio Berton <fabio.berton@ossystems.com.br>
+Date: Thu, 8 Dec 2016 15:49:49 -0200
+Subject: [PATCH] configs: mvebu: Set enviroment to boot with MMC
+Organization: O.S. Systems Software LTDA.
+
+Upstream-Status: Pending
+
+Signed-off-by: Fabio Berton <fabio.berton@ossystems.com.br>
+---
+ include/configs/mvebu-common.h | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/include/configs/mvebu-common.h b/include/configs/mvebu-common.h
+index 032b6aa..f9ebd1b 100644
+--- a/include/configs/mvebu-common.h
++++ b/include/configs/mvebu-common.h
+@@ -168,10 +168,9 @@
+ 					"image_name=Image\0"		\
+ 					"get_ramfs=if test \"${ramfs_name}\" != \"-\"; then setenv ramfs_addr "	\
+ 					"0x3000000; tftp $ramfs_addr $ramfs_name; else setenv ramfs_addr -;fi\0"\
+-					"get_images=tftp $kernel_addr $image_name; tftp $fdt_addr $fdt_name; "	\
+-						"run get_ramfs\0"						\
++					"get_images=mmc rescan; fatload mmc 0 ${kernel_addr} Image; fatload mmc 0 ${fdt_addr} ${fdt_name}\0"             \
+ 					"console=" CONFIG_DEFAULT_CONSOLE "\0"					\
+-					"root=root=/dev/nfs rw\0"						\
++					"root=root=/dev/mmcblk0p2 rw rootwait\0"						\
+ 					"set_bootargs=setenv bootargs $console $root "				\
+ 					"root_nfs=root=/dev/nfs rw\0" \
+ 					"set_bootargs=setenv bootargs $console $root_nfs " \
+@@ -183,7 +182,7 @@
+ 						"booti ${loadaddr} - ${fdt_addr}"
+ 
+ 
+-#define CONFIG_BOOTCOMMAND		"run get_images; run set_bootargs; booti $kernel_addr $ramfs_addr $fdt_addr"
++#define CONFIG_BOOTCOMMAND		"run get_images; run set_bootargs; booti $kernel_addr - $fdt_addr"
+ 
+ /* U-Boot Commands */
+ /* #define CONFIG_BOOTP_MASK       (CONFIG_BOOTP_DEFAULT | CONFIG_BOOTP_BOOTFILESIZE) */
+-- 
+2.1.4
+
