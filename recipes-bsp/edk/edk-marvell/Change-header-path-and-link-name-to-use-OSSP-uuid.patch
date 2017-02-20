@@ -1,0 +1,68 @@
+From 3221feacc42eba6d31d18980a8314286afa06bff Mon Sep 17 00:00:00 2001
+From: Fabio Berton <fabio.berton@ossystems.com.br>
+Date: Tue, 24 May 2016 15:44:04 -0300
+Subject: [PATCH] Change header path and link name to use OSSP uuid.
+Organization: O.S. Systems Software LTDA.
+
+Upstream-Status: Inappropriate [embedded specific]
+
+Signed-off-by: Fabio Berton <fabio.berton@ossystems.com.br>
+---
+ BaseTools/Source/C/GenFv/GNUmakefile        | 2 +-
+ BaseTools/Source/C/GenFv/GenFvInternalLib.c | 2 +-
+ BaseTools/Source/C/GenFw/GNUmakefile        | 2 +-
+ BaseTools/Source/C/GenSec/GNUmakefile       | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/BaseTools/Source/C/GenFv/GNUmakefile b/BaseTools/Source/C/GenFv/GNUmakefile
+index 58ad16c..894b0ba 100644
+--- a/BaseTools/Source/C/GenFv/GNUmakefile
++++ b/BaseTools/Source/C/GenFv/GNUmakefile
+@@ -25,6 +25,6 @@ ifeq ($(CYGWIN), CYGWIN)
+ endif
+ 
+ ifeq ($(LINUX), Linux)
+-  LIBS += -luuid
++  LIBS += -lossp-uuid
+ endif
+ 
+diff --git a/BaseTools/Source/C/GenFv/GenFvInternalLib.c b/BaseTools/Source/C/GenFv/GenFvInternalLib.c
+index 7c839e2..480bbf8 100644
+--- a/BaseTools/Source/C/GenFv/GenFvInternalLib.c
++++ b/BaseTools/Source/C/GenFv/GenFvInternalLib.c
+@@ -21,7 +21,7 @@ WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
+ #if defined(__FreeBSD__)
+ #include <uuid.h>
+ #elif defined(__GNUC__)
+-#include <uuid/uuid.h>
++#include <ossp/uuid.h>
+ #endif
+ #ifdef __GNUC__
+ #include <sys/stat.h>
+diff --git a/BaseTools/Source/C/GenFw/GNUmakefile b/BaseTools/Source/C/GenFw/GNUmakefile
+index ec5b872..c7590b6 100644
+--- a/BaseTools/Source/C/GenFw/GNUmakefile
++++ b/BaseTools/Source/C/GenFw/GNUmakefile
+@@ -25,6 +25,6 @@ ifeq ($(CYGWIN), CYGWIN)
+ endif
+ 
+ ifeq ($(LINUX), Linux)
+-  LIBS += -luuid
++  LIBS += -lossp-uuid
+ endif
+ 
+diff --git a/BaseTools/Source/C/GenSec/GNUmakefile b/BaseTools/Source/C/GenSec/GNUmakefile
+index c2d289c..48f1509 100644
+--- a/BaseTools/Source/C/GenSec/GNUmakefile
++++ b/BaseTools/Source/C/GenSec/GNUmakefile
+@@ -25,6 +25,6 @@ ifeq ($(CYGWIN), CYGWIN)
+ endif
+ 
+ ifeq ($(LINUX), Linux)
+-  LIBS += -luuid
++  LIBS += -lossp-uuid
+ endif
+ 
+-- 
+2.1.4
+

@@ -1,0 +1,33 @@
+From e025920b1e3ac3bd8adb292534a9b26df7f136d5 Mon Sep 17 00:00:00 2001
+From: Fabio Berton <fabio.berton@ossystems.com.br>
+Date: Wed, 8 Jun 2016 15:30:32 -0300
+Subject: [PATCH] Remove Werror from CFLAGS to avoid build errors with gcc
+ 4.8.x
+Organization: O.S. Systems Software LTDA.
+
+Upstream-Status: Pending
+
+Signed-off-by: Fabio Berton <fabio.berton@ossystems.com.br>
+---
+ BaseTools/Source/C/Makefiles/header.makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/BaseTools/Source/C/Makefiles/header.makefile b/BaseTools/Source/C/Makefiles/header.makefile
+index 09d2bff..5ecb62c 100644
+--- a/BaseTools/Source/C/Makefiles/header.makefile
++++ b/BaseTools/Source/C/Makefiles/header.makefile
+@@ -47,9 +47,9 @@ INCLUDE = $(TOOL_INCLUDE) -I $(MAKEROOT) -I $(MAKEROOT)/Include/Common -I $(MAKE
+ CPPFLAGS = $(INCLUDE)
+ ifeq ($(DARWIN),Darwin)
+ # assume clang or clang compatible flags on OS X
+-CFLAGS = -MD -fshort-wchar -fno-strict-aliasing -Wall -Werror -Wno-deprecated-declarations -Wno-self-assign -nostdlib -c -g
++CFLAGS = -MD -fshort-wchar -fno-strict-aliasing -Wall -Wno-deprecated-declarations -Wno-self-assign -nostdlib -c -g
+ else
+-CFLAGS = -MD -fshort-wchar -fno-strict-aliasing -Wall -Werror -Wno-deprecated-declarations -nostdlib -c -g
++CFLAGS = -MD -fshort-wchar -fno-strict-aliasing -Wall -Wno-deprecated-declarations -nostdlib -c -g
+ endif
+ LFLAGS =
+ 
+-- 
+2.1.4
+
