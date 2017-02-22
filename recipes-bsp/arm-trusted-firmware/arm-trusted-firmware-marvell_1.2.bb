@@ -7,6 +7,8 @@ DEPENDS = " \
     ${@bb.utils.contains("MACHINE_FEATURES", "edk-efi", "edk-marvell", "virtual/bootloader",d)} \
 "
 
+DEPENDS_append_armada37xx = "lib32-gcc-cross-arm unzip-native"
+
 PROVIDES += "arm-trusted-firmware"
 
 inherit deploy
@@ -62,6 +64,18 @@ EXTRA_OEMAKE += " \
     USE_COHERENT_MEM=0 \
     LOG_LEVEL=20 \
 "
+
+# ARM 32-bit cross compiler, which is required by building WTMI image for CM3.
+export CROSS_CM3 = "${STAGING_BINDIR_NATIVE}/arm-marvellmllib32-linux-gnueabi/arm-marvellmllib32-linux-gnueabi-"
+
+do_compile_prepend_armada37xx() {
+    if [ ! -f ${S}/WTPTP_TOOLS_3_3_12/Linux_Tools/*tbb_linux.exe ]; then
+        unzip ${S}/tools/wtp/WTPTP_TOOLS_3_3_12.zip
+        chmod a+x ${S}/WTPTP_TOOLS_3_3_12/Linux_Tools/*tbb_linux.exe
+        cp ${S}/WTPTP_TOOLS_3_3_12/Linux_Tools/*tbb_linux.exe ${STAGING_BINDIR_NATIVE}/
+   fi
+
+}
 
 do_compile() {
 	oe_runmake all fip
