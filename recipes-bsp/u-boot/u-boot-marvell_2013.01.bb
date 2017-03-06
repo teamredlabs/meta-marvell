@@ -7,17 +7,23 @@ LIC_FILES_CHKSUM = "file://README;md5=90fb5e9af37e63370e37e9a9178cc427"
 PROVIDES += "u-boot"
 
 SRC_URI = " \
-    git://git@github.com/MarvellEmbeddedProcessors/u-boot-marvell;branch=${SRCBRANCH};protocol=https \
-    file://0001-armv7-config.mk-Enable-hard-float-support.patch \
-    file://0002-Revert-bin_header_debug-add-implementation-of-C-libr.patch \
+    git://git@github.com/MarvellEmbeddedProcessors/u-boot-marvell.git;branch=${SRCBRANCH_uboot};protocol=https;name=uboot;destsuffix=uboot \
+    file://0001-armv7-config.mk-Enable-hard-float-support.patch;name=uboot \
+    file://0002-Revert-bin_header_debug-add-implementation-of-C-libr.patch;name=uboot \
+    git://git@github.com/MarvellEmbeddedProcessors/mv-ddr-marvell.git;branch=${SRCBRANCH_mv-ddr};protocol=https;name=mv-ddr;destsuffix=mv-ddr \
 "
 
-SRCBRANCH = "u-boot-2013.01-armada-17.02"
-SRCREV = "7afd4bf6a1abc3a9856871c014537beab9d0f664"
+SRCREV_uboot = "7afd4bf6a1abc3a9856871c014537beab9d0f664"
+SRCBRANCH_uboot = "u-boot-2013.01-armada-17.02"
+
+SRCREV_mv-ddr = "42da6dacf1b62e51d0807feee1f5e186a16f084b"
+SRCBRANCH_mv-ddr = "mv_ddr-armada-17.02"
+
+SRCREV_FORMAT = "uboot"
 
 PV .= "+git${SRCPV}"
 
-S = "${WORKDIR}/git"
+S = "${WORKDIR}/uboot"
 
 do_compile () {
     unset LDFLAGS
@@ -39,11 +45,11 @@ do_compile () {
     if [ "${UBOOT_MARVELL_MACHINE}" = "armada_38x_clearfog" ]
     then
         export CROSS_COMPILE_BH=${TARGET_PREFIX}
-        perl build.pl -f mmc -b ${UBOOT_MARVELL_MACHINE} -v "yocto" -c -d 3 -m 3
+        perl build.pl -f mmc -b ${UBOOT_MARVELL_MACHINE} -v "yocto" -c -d 3 -m 3 -D ${WORKDIR}/mv-ddr
         cp -f u-boot-a38x-yocto-mmc.bin u-boot.mmc
     else
         export CROSS_COMPILE_BH=${TARGET_PREFIX}
-        perl build.pl -f spi -b ${UBOOT_MARVELL_MACHINE} -v "yocto" -i spi -c -d 3 -m 3
+        perl build.pl -f spi -b ${UBOOT_MARVELL_MACHINE} -v "yocto" -i spi -c -d 3 -m 3 -D ${WORKDIR}/mv-ddr
         cp -f u-boot-a38x-yocto-spi.bin u-boot.bin
     fi
 }
@@ -51,4 +57,3 @@ do_compile () {
 COMPATIBLE_MACHINE = "(armada38x)"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
-
