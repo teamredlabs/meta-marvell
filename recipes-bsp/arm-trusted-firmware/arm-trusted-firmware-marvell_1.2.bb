@@ -18,6 +18,7 @@ S = "${WORKDIR}/atf"
 SRC_URI = " \
     git://git@github.com/MarvellEmbeddedProcessors/atf-marvell.git;branch=${SRCBRANCH_atf};protocol=https;name=atf;destsuffix=atf \
     git://git@github.com/MarvellEmbeddedProcessors/mv-ddr-marvell.git;branch=${SRCBRANCH_mv-ddr};protocol=https;name=mv-ddr;destsuffix=mv-ddr \
+    git://git@github.com/MarvellEmbeddedProcessors/binaries-marvell.git;branch=${SRCBRANCH_bin-marvell};protocol=ssh;name=bin-marvell;destsuffix=bin-marvell \
 "
 
 SRCREV_atf = "19e848bca9e9338c92a9fd32e780a604ba019de0"
@@ -25,6 +26,9 @@ SRCBRANCH_atf = "atf-v1.2-armada-17.02"
 
 SRCREV_mv-ddr = "42da6dacf1b62e51d0807feee1f5e186a16f084b"
 SRCBRANCH_mv-ddr = "mv_ddr-armada-17.02"
+
+SRCREV_bin-marvell = "c00864f28553edd4cc7bc7ebb166b9a60a04a1af"
+SRCBRANCH_bin-marvell = "binaries-marvell"
 
 SRCREV_FORMAT = "atf"
 
@@ -67,6 +71,9 @@ EXTRA_OEMAKE += " \
 
 # ARM 32-bit cross compiler, which is required by building WTMI image for CM3.
 export CROSS_CM3 = "${STAGING_BINDIR_NATIVE}/arm-marvellmllib32-linux-gnueabi/arm-marvellmllib32-linux-gnueabi-"
+
+# Export path to binary file
+export SCP_BL2="${WORKDIR}/bin-marvell/RTOSDemo-cm3.bin"
 
 do_compile_prepend_armada37xx() {
     if [ ! -f ${S}/WTPTP_TOOLS_3_3_12/Linux_Tools/*tbb_linux.exe ]; then
