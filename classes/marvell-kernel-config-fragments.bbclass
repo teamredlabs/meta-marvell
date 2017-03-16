@@ -8,6 +8,9 @@
 #
 # Copyright 2016 (C) O.S. Systems Software LTDA.
 
+# For merge_config.sh
+DEPENDS += "kern-tools-native"
+
 ######
 ### Utilities
 #####
@@ -31,10 +34,8 @@ def src_config_fragments(d):
 
 merge_fragment_pipeline = "cat"
 
-do_preconfigure() {
+do_configure_prepend() {
     mkdir -p ${B}
     cp '${WORKDIR}/defconfig' '${B}/.config'
     merge_fragments ${B}/.config
 }
-
-addtask preconfigure before do_configure after do_patch
