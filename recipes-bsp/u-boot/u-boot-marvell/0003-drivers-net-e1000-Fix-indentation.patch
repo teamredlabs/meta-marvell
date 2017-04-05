@@ -1,0 +1,197 @@
+From 08a5ad40b1a7a293abf24a63f9452e208aa59f7d Mon Sep 17 00:00:00 2001
+From: Fabio Berton <fabio.berton@ossystems.com.br>
+Date: Mon, 3 Apr 2017 13:44:25 -0300
+Subject: [PATCH 3/5] drivers: net: e1000: Fix indentation
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Organization: O.S. Systems Software LTDA.
+
+Fix this error when compiling with GCC 6:
+
+drivers/net/e1000.c: In function ‘e1000_initialize_hardware_bits’:
+drivers/net/e1000.c:1556:2: error: this ‘if’ clause does not guard...
+[-Werror=misleading-indentation]
+  if (hw->mac_type == e1000_igb)
+  ^~
+drivers/net/e1000.c:1559:3: note: ...this statement, but the latter
+is misleadingly indented as if it is guarded by the ‘if’
+   switch (hw->mac_type) {
+   ^~~~~~
+
+Upstream-Status: Pending
+
+Signed-off-by: Fabio Berton <fabio.berton@ossystems.com.br>
+---
+ drivers/net/e1000.c | 140 ++++++++++++++++++++++++++--------------------------
+ 1 file changed, 70 insertions(+), 70 deletions(-)
+
+diff --git a/drivers/net/e1000.c b/drivers/net/e1000.c
+index 9a3f61a246..2e452c755e 100644
+--- a/drivers/net/e1000.c
++++ b/drivers/net/e1000.c
+@@ -1553,91 +1553,91 @@ e1000_initialize_hardware_bits(struct e1000_hw *hw)
+ 		E1000_WRITE_REG(hw, TXDCTL1, reg_txdctl1);
+ 
+ 	/* IGB is cool */
+-	if (hw->mac_type == e1000_igb)
+-		return;
++        if (hw->mac_type == e1000_igb)
++          return;
+ 
+ 		switch (hw->mac_type) {
+ 		case e1000_82571:
+ 		case e1000_82572:
+-			/* Clear PHY TX compatible mode bits */
+-			reg_tarc1 = E1000_READ_REG(hw, TARC1);
+-			reg_tarc1 &= ~((1 << 30)|(1 << 29));
++          /* Clear PHY TX compatible mode bits */
++          reg_tarc1 = E1000_READ_REG(hw, TARC1);
++          reg_tarc1 &= ~((1 << 30)|(1 << 29));
+ 
+-			/* link autonegotiation/sync workarounds */
+-			reg_tarc0 |= ((1 << 26)|(1 << 25)|(1 << 24)|(1 << 23));
++          /* link autonegotiation/sync workarounds */
++          reg_tarc0 |= ((1 << 26)|(1 << 25)|(1 << 24)|(1 << 23));
+ 
+-			/* TX ring control fixes */
+-			reg_tarc1 |= ((1 << 26)|(1 << 25)|(1 << 24));
++          /* TX ring control fixes */
++          reg_tarc1 |= ((1 << 26)|(1 << 25)|(1 << 24));
+ 
+-			/* Multiple read bit is reversed polarity */
+-			reg_tctl = E1000_READ_REG(hw, TCTL);
+-			if (reg_tctl & E1000_TCTL_MULR)
+-				reg_tarc1 &= ~(1 << 28);
+-			else
+-				reg_tarc1 |= (1 << 28);
++          /* Multiple read bit is reversed polarity */
++          reg_tctl = E1000_READ_REG(hw, TCTL);
++          if (reg_tctl & E1000_TCTL_MULR)
++            reg_tarc1 &= ~(1 << 28);
++          else
++            reg_tarc1 |= (1 << 28);
+ 
+-			E1000_WRITE_REG(hw, TARC1, reg_tarc1);
+-			break;
++          E1000_WRITE_REG(hw, TARC1, reg_tarc1);
++          break;
+ 		case e1000_82573:
+ 		case e1000_82574:
+-			reg_ctrl_ext = E1000_READ_REG(hw, CTRL_EXT);
+-			reg_ctrl_ext &= ~(1 << 23);
+-			reg_ctrl_ext |= (1 << 22);
++          reg_ctrl_ext = E1000_READ_REG(hw, CTRL_EXT);
++          reg_ctrl_ext &= ~(1 << 23);
++          reg_ctrl_ext |= (1 << 22);
+ 
+-			/* TX byte count fix */
+-			reg_ctrl = E1000_READ_REG(hw, CTRL);
+-			reg_ctrl &= ~(1 << 29);
++          /* TX byte count fix */
++          reg_ctrl = E1000_READ_REG(hw, CTRL);
++          reg_ctrl &= ~(1 << 29);
+ 
+-			E1000_WRITE_REG(hw, CTRL_EXT, reg_ctrl_ext);
+-			E1000_WRITE_REG(hw, CTRL, reg_ctrl);
+-			break;
++          E1000_WRITE_REG(hw, CTRL_EXT, reg_ctrl_ext);
++          E1000_WRITE_REG(hw, CTRL, reg_ctrl);
++          break;
+ 		case e1000_80003es2lan:
+-	/* improve small packet performace for fiber/serdes */
+-			if ((hw->media_type == e1000_media_type_fiber)
+-			|| (hw->media_type ==
+-				e1000_media_type_internal_serdes)) {
+-				reg_tarc0 &= ~(1 << 20);
+-			}
+-
+-		/* Multiple read bit is reversed polarity */
+-			reg_tctl = E1000_READ_REG(hw, TCTL);
+-			reg_tarc1 = E1000_READ_REG(hw, TARC1);
+-			if (reg_tctl & E1000_TCTL_MULR)
+-				reg_tarc1 &= ~(1 << 28);
+-			else
+-				reg_tarc1 |= (1 << 28);
+-
+-			E1000_WRITE_REG(hw, TARC1, reg_tarc1);
+-			break;
++          /* improve small packet performace for fiber/serdes */
++          if ((hw->media_type == e1000_media_type_fiber)
++              || (hw->media_type ==
++                  e1000_media_type_internal_serdes)) {
++            reg_tarc0 &= ~(1 << 20);
++          }
++
++          /* Multiple read bit is reversed polarity */
++          reg_tctl = E1000_READ_REG(hw, TCTL);
++          reg_tarc1 = E1000_READ_REG(hw, TARC1);
++          if (reg_tctl & E1000_TCTL_MULR)
++            reg_tarc1 &= ~(1 << 28);
++          else
++            reg_tarc1 |= (1 << 28);
++
++          E1000_WRITE_REG(hw, TARC1, reg_tarc1);
++          break;
+ 		case e1000_ich8lan:
+-			/* Reduce concurrent DMA requests to 3 from 4 */
+-			if ((hw->revision_id < 3) ||
+-			((hw->device_id != E1000_DEV_ID_ICH8_IGP_M_AMT) &&
+-				(hw->device_id != E1000_DEV_ID_ICH8_IGP_M)))
+-				reg_tarc0 |= ((1 << 29)|(1 << 28));
+-
+-			reg_ctrl_ext = E1000_READ_REG(hw, CTRL_EXT);
+-			reg_ctrl_ext |= (1 << 22);
+-			E1000_WRITE_REG(hw, CTRL_EXT, reg_ctrl_ext);
+-
+-			/* workaround TX hang with TSO=on */
+-			reg_tarc0 |= ((1 << 27)|(1 << 26)|(1 << 24)|(1 << 23));
+-
+-			/* Multiple read bit is reversed polarity */
+-			reg_tctl = E1000_READ_REG(hw, TCTL);
+-			reg_tarc1 = E1000_READ_REG(hw, TARC1);
+-			if (reg_tctl & E1000_TCTL_MULR)
+-				reg_tarc1 &= ~(1 << 28);
+-			else
+-				reg_tarc1 |= (1 << 28);
+-
+-			/* workaround TX hang with TSO=on */
+-			reg_tarc1 |= ((1 << 30)|(1 << 26)|(1 << 24));
+-
+-			E1000_WRITE_REG(hw, TARC1, reg_tarc1);
+-			break;
++          /* Reduce concurrent DMA requests to 3 from 4 */
++          if ((hw->revision_id < 3) ||
++              ((hw->device_id != E1000_DEV_ID_ICH8_IGP_M_AMT) &&
++               (hw->device_id != E1000_DEV_ID_ICH8_IGP_M)))
++            reg_tarc0 |= ((1 << 29)|(1 << 28));
++
++          reg_ctrl_ext = E1000_READ_REG(hw, CTRL_EXT);
++          reg_ctrl_ext |= (1 << 22);
++          E1000_WRITE_REG(hw, CTRL_EXT, reg_ctrl_ext);
++
++          /* workaround TX hang with TSO=on */
++          reg_tarc0 |= ((1 << 27)|(1 << 26)|(1 << 24)|(1 << 23));
++
++          /* Multiple read bit is reversed polarity */
++          reg_tctl = E1000_READ_REG(hw, TCTL);
++          reg_tarc1 = E1000_READ_REG(hw, TARC1);
++          if (reg_tctl & E1000_TCTL_MULR)
++            reg_tarc1 &= ~(1 << 28);
++          else
++            reg_tarc1 |= (1 << 28);
++
++          /* workaround TX hang with TSO=on */
++          reg_tarc1 |= ((1 << 30)|(1 << 26)|(1 << 24));
++
++          E1000_WRITE_REG(hw, TARC1, reg_tarc1);
++          break;
+ 		default:
+-			break;
++          break;
+ 		}
+ 
+ 		E1000_WRITE_REG(hw, TARC0, reg_tarc0);
+-- 
+2.11.0
+

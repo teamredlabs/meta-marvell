@@ -1,0 +1,29 @@
+From aa9fa8e65e9a72d62b72cf96bee524db7b191e77 Mon Sep 17 00:00:00 2001
+From: Fabio Berton <fabio.berton@ossystems.com.br>
+Date: Tue, 4 Apr 2017 18:19:39 -0300
+Subject: [PATCH 5/5] Makefile: Use dtc from host
+Organization: O.S. Systems Software LTDA.
+
+Upstream-Status: Pending
+
+Signed-off-by: Fabio Berton <fabio.berton@ossystems.com.br>
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index a65b85067c..b6520bf28b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -341,7 +341,7 @@ OBJDUMP		= $(CROSS_COMPILE)objdump
+ AWK		= awk
+ PERL		= perl
+ PYTHON		= python
+-DTC		= ./tools/marvell/dtc
++DTC		= dtc
+ CHECK		= sparse
+ 
+ CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
+-- 
+2.11.0
+
