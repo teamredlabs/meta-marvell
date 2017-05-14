@@ -13,11 +13,11 @@ SRC_URI = " \
     git://git@github.com/MarvellEmbeddedProcessors/mv-ddr-marvell.git;branch=${SRCBRANCH_mv-ddr};protocol=https;name=mv-ddr;destsuffix=mv-ddr \
 "
 
-SRCREV_uboot = "7afd4bf6a1abc3a9856871c014537beab9d0f664"
-SRCBRANCH_uboot = "u-boot-2013.01-armada-17.02"
+SRCREV_uboot = "ac75ba58edb9fd8e71a38d5d09f8a6bb4f56d71d"
+SRCBRANCH_uboot = "u-boot-2013.01-armada-17.06"
 
-SRCREV_mv-ddr = "42da6dacf1b62e51d0807feee1f5e186a16f084b"
-SRCBRANCH_mv-ddr = "mv_ddr-armada-17.02"
+SRCREV_mv-ddr = "a55312d36ebf97710bcdcba6f12fd0a71b37ce76"
+SRCBRANCH_mv-ddr = "mv_ddr-armada-17.06"
 
 SRCREV_FORMAT = "uboot"
 
