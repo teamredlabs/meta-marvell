@@ -2,7 +2,7 @@ require recipes-bsp/u-boot/u-boot.inc
 
 DESCRIPTION = "U-Boot for Marvell Embedded Processors"
 LICENSE = "GPLv2+"
-LIC_FILES_CHKSUM = "file://README;md5=9cf65ad0dfdd03102e58510c8a27a71a"
+LIC_FILES_CHKSUM = "file://README;md5=089c6275df97d40f52f08aee128a2ad3"
 
 PROVIDES += "u-boot"
 
