@@ -21,7 +21,7 @@ SRC_URI = " \
     git://git@github.com/MarvellEmbeddedProcessors/binaries-marvell.git;branch=${SRCBRANCH_bin-marvell};protocol=ssh;name=bin-marvell;destsuffix=bin-marvell \
 "
 
-SRCREV_atf = "66befb58cd4ee488b121fb65fee9d7d750e34337"
+SRCREV_atf = "1cc44d000c636e85e3fd538cf9f95e33a4c2e7db"
 SRCBRANCH_atf = "atf-v1.3-armada-17.06"
 
 SRCREV_mv-ddr = "a55312d36ebf97710bcdcba6f12fd0a71b37ce76"
