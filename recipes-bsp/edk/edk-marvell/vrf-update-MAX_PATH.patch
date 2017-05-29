@@ -1,0 +1,27 @@
+From 708c00ede4ec1e8edc43d9f0a952029af417ce10 Mon Sep 17 00:00:00 2001
+From: Neta Zur <neta@marvell.com>
+Date: Sun, 28 May 2017 17:56:50 +0300
+Subject: [PATCH 1/1] vrf: update MAX_PATH
+
+Change-Id: I719236a2831ec639223c61f4e3e50ad47d83a09e
+Signed-off-by: Neta Zur <neta@marvell.com>
+---
+ BaseTools/Source/C/VfrCompile/EfiVfr.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/BaseTools/Source/C/VfrCompile/EfiVfr.h b/BaseTools/Source/C/VfrCompile/EfiVfr.h
+index d187902e2..9edc66fe4 100644
+--- a/BaseTools/Source/C/VfrCompile/EfiVfr.h
++++ b/BaseTools/Source/C/VfrCompile/EfiVfr.h
+@@ -19,7 +19,7 @@ WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
+ #include "Common/UefiInternalFormRepresentation.h"
+ #include "Common/MdeModuleHii.h"
+ 
+-#define MAX_PATH                 255
++#define MAX_PATH                 1024
+ #define MAX_VFR_LINE_LEN         4096
+ 
+ #define EFI_IFR_MAX_LENGTH       0xFF
+-- 
+2.11.0
+

@@ -9,13 +9,14 @@ inherit deploy
 
 S = "${WORKDIR}/git"
 
-SRCREV = "19358fc15cea1ddb0540fe07e6d5c639de7eab71"
-SRCBRANCH = "edk2-2.5-armada-17.02"
+SRCREV = "38328dce268f9aff6a46ee9b4b08d2b6c88f407d"
+SRCBRANCH = "uefi-armada-17.06"
 SRC_URI = " \
-    git://git@github.com/MarvellEmbeddedProcessors/edk-marvell.git;branch=${SRCBRANCH};protocol=https \
+    git://git@github.com/MarvellEmbeddedProcessors/uefi-marvell.git;branch=${SRCBRANCH};protocol=https \
     file://Change-header-path-and-link-name-to-use-OSSP-uuid.patch \
     file://Remove-bashism.patch \
     file://Remove-Werror-from-CFLAGS-to-avoid-build-errors-with.patch \
+    file://vrf-update-MAX_PATH.patch \
     file://startup.nsh \
 "
 
@@ -47,7 +48,7 @@ do_install[noexec] = "1"
 
 do_deploy () {
     install -d ${DEPLOYDIR}
-    install -m 0644 ${S}/Build/${EDK_PLATFORM}/DEBUG_GCC49/FV/*.fd ${DEPLOYDIR}/edk-efi.fd-${MACHINE}-${PV}-${PR}
+    install -m 0644 ${S}/Build/${EDK_PLATFORM}-AARCH64/DEBUG_GCC49/FV/*.fd ${DEPLOYDIR}/edk-efi.fd-${MACHINE}-${PV}-${PR}
     ln -sf edk-efi.fd-${MACHINE}-${PV}-${PR} ${DEPLOYDIR}/edk-efi.fd-${MACHINE}
     ln -sf edk-efi.fd-${MACHINE}-${PV}-${PR} ${DEPLOYDIR}/edk-efi.fd
 
