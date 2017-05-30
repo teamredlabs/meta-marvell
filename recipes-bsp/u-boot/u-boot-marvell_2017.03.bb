@@ -6,6 +6,8 @@ LIC_FILES_CHKSUM = "file://README;md5=089c6275df97d40f52f08aee128a2ad3"
 
 PROVIDES += "u-boot"
 
+DEPENDS_append = " dtc-native"
+
 SRC_URI = " \
     git://git@github.com/MarvellEmbeddedProcessors/u-boot-marvell;branch=${SRCBRANCH};protocol=https \
 "
