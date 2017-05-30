@@ -19,6 +19,7 @@ SRC_URI = " \
     git://git@github.com/MarvellEmbeddedProcessors/atf-marvell.git;branch=${SRCBRANCH_atf};protocol=https;name=atf;destsuffix=atf \
     git://git@github.com/MarvellEmbeddedProcessors/mv-ddr-marvell.git;branch=${SRCBRANCH_mv-ddr};protocol=https;name=mv-ddr;destsuffix=mv-ddr \
     git://git@github.com/MarvellEmbeddedProcessors/binaries-marvell.git;branch=${SRCBRANCH_bin-marvell};protocol=ssh;name=bin-marvell;destsuffix=bin-marvell \
+    git://git@github.com/MarvellEmbeddedProcessors/A3700-utils-marvell.git;branch=${SRCBRANCH_A3700-utils};protocol=ssh;name=A3700-utils;destsuffix=A3700-utils \
 "
 
 SRCREV_atf = "1cc44d000c636e85e3fd538cf9f95e33a4c2e7db"
@@ -29,6 +30,10 @@ SRCBRANCH_mv-ddr = "mv_ddr-armada-17.06"
 
 SRCREV_bin-marvell = "dcca74278b7f2f0313775cd6d1983190116242fd"
 SRCBRANCH_bin-marvell = "binaries-marvell-armada-17.06"
+
+SRCREV_A3700-utils = "237f07b78e82d518897e4df83e90c7996dfdca71"
+SRCBRANCH_A3700-utils = "A3700_utils-armada-17.06"
+
 
 SRCREV_FORMAT = "atf"
 
@@ -76,12 +81,7 @@ export CROSS_CM3 = "${STAGING_BINDIR_NATIVE}/arm-marvellmllib32-linux-gnueabi/ar
 export SCP_BL2="${WORKDIR}/bin-marvell/RTOSDemo-cm3.bin"
 
 do_compile_prepend_armada37xx() {
-    if [ ! -f ${S}/WTPTP_TOOLS_3_3_12/Linux_Tools/*tbb_linux.exe ]; then
-        unzip ${S}/tools/wtp/WTPTP_TOOLS_3_3_12.zip
-        chmod a+x ${S}/WTPTP_TOOLS_3_3_12/Linux_Tools/*tbb_linux.exe
-        cp ${S}/WTPTP_TOOLS_3_3_12/Linux_Tools/*tbb_linux.exe ${STAGING_BINDIR_NATIVE}/
-   fi
-
+	export WTP=${WORKDIR}/A3700-utils/
 }
 
 do_compile() {
@@ -99,4 +99,4 @@ do_deploy() {
 addtask deploy before do_build after do_compile
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
-COMPATIBLE_MACHINE = "(armada70xx|armada80xx)"
+COMPATIBLE_MACHINE = "(armada70xx|armada80xx|armada37xx)"
