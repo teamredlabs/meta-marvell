@@ -2,7 +2,7 @@ require recipes-kernel/linux/linux-marvell.inc
 
 SOC_SRC_URI = "git://git@github.com/MarvellEmbeddedProcessors/linux-marvell.git;protocol=https"
 SRCBRANCH = "linux-4.4.52-armada-17.06"
-SRCREV = "10a2c3eb3618e67cc2dafa88b2ebbbca8bdb660a"
+SRCREV = "caa3a4f127ade269866073b1d1171ca0dae3efd1"
 
 SRC_URI += "${@bb.utils.contains('TUNE_FEATURES', 'bigendian', 'file://big-endian.cfg',  '', d)}"
 
