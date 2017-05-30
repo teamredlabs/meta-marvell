@@ -11,7 +11,7 @@ SRC_URI = " \
 "
 
 SRCBRANCH = "u-boot-2017.03-armada-17.06"
-SRCREV = "5c839036cb5adad33d30bad440d5e12119b73538"
+SRCREV = "a33ecb814b9f603db77e9c338f6ceb015b2e3298"
 
 S = "${WORKDIR}/git"
 
