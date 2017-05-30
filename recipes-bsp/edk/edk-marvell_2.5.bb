@@ -9,7 +9,7 @@ inherit deploy
 
 S = "${WORKDIR}/git"
 
-SRCREV = "38328dce268f9aff6a46ee9b4b08d2b6c88f407d"
+SRCREV = "21831bc6ccba36ee3c2f5c982611030fe3323b45"
 SRCBRANCH = "uefi-armada-17.06"
 SRC_URI = " \
     git://git@github.com/MarvellEmbeddedProcessors/uefi-marvell.git;branch=${SRCBRANCH};protocol=https \
