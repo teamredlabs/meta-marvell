@@ -22,10 +22,10 @@ SRC_URI = " \
     git://git@github.com/MarvellEmbeddedProcessors/A3700-utils-marvell.git;branch=${SRCBRANCH_A3700-utils};protocol=ssh;name=A3700-utils;destsuffix=A3700-utils \
 "
 
-SRCREV_atf = "1cc44d000c636e85e3fd538cf9f95e33a4c2e7db"
+SRCREV_atf = "297d68fcf6676e8eaa78df9eaf73cbd38343ba60"
 SRCBRANCH_atf = "atf-v1.3-armada-17.06"
 
-SRCREV_mv-ddr = "a55312d36ebf97710bcdcba6f12fd0a71b37ce76"
+SRCREV_mv-ddr = "47f4c8bd825b873ba66b18344b2b0e05ba56bf26"
 SRCBRANCH_mv-ddr = "mv_ddr-armada-17.06"
 
 SRCREV_bin-marvell = "dcca74278b7f2f0313775cd6d1983190116242fd"
