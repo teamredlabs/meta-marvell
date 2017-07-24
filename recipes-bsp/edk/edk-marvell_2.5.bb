@@ -9,8 +9,8 @@ inherit deploy
 
 S = "${WORKDIR}/git"
 
-SRCREV = "21831bc6ccba36ee3c2f5c982611030fe3323b45"
-SRCBRANCH = "uefi-armada-17.06"
+SRCREV = "00eb373cb2b6ed36f9c034a3112e50a56f3320ea"
+SRCBRANCH = "uefi-armada-17.08"
 SRC_URI = " \
     git://git@github.com/MarvellEmbeddedProcessors/uefi-marvell.git;branch=${SRCBRANCH};protocol=https \
     file://Change-header-path-and-link-name-to-use-OSSP-uuid.patch \
