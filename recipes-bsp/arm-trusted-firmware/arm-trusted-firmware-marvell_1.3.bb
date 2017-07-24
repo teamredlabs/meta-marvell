@@ -22,17 +22,17 @@ SRC_URI = " \
     git://git@github.com/MarvellEmbeddedProcessors/A3700-utils-marvell.git;branch=${SRCBRANCH_A3700-utils};protocol=ssh;name=A3700-utils;destsuffix=A3700-utils \
 "
 
-SRCREV_atf = "297d68fcf6676e8eaa78df9eaf73cbd38343ba60"
-SRCBRANCH_atf = "atf-v1.3-armada-17.06"
+SRCREV_atf = "5bd9bc5c49a836d6581e345132d9b16b9375ac21"
+SRCBRANCH_atf = "atf-v1.3-armada-17.08"
 
-SRCREV_mv-ddr = "47f4c8bd825b873ba66b18344b2b0e05ba56bf26"
-SRCBRANCH_mv-ddr = "mv_ddr-armada-17.06"
+SRCREV_mv-ddr = "7ffc0a58074b6325b87c45bd67c445f0988b092f"
+SRCBRANCH_mv-ddr = "mv_ddr-armada-17.08"
 
-SRCREV_bin-marvell = "dcca74278b7f2f0313775cd6d1983190116242fd"
-SRCBRANCH_bin-marvell = "binaries-marvell-armada-17.06"
+SRCREV_bin-marvell = "98dd008d33bbcc041dde03d12dfd09a73e60a3f3"
+SRCBRANCH_bin-marvell = "binaries-marvell-armada-17.08"
 
-SRCREV_A3700-utils = "237f07b78e82d518897e4df83e90c7996dfdca71"
-SRCBRANCH_A3700-utils = "A3700_utils-armada-17.06"
+SRCREV_A3700-utils = "4425a6b787c50e156b926560ce285dd34745fb30"
+SRCBRANCH_A3700-utils = "A3700_utils-armada-17.08"
 
 
 SRCREV_FORMAT = "atf"
