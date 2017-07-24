@@ -16,8 +16,8 @@ SRC_URI = " \
 SRCREV_uboot = "ac75ba58edb9fd8e71a38d5d09f8a6bb4f56d71d"
 SRCBRANCH_uboot = "u-boot-2013.01-armada-17.06"
 
-SRCREV_mv-ddr = "a55312d36ebf97710bcdcba6f12fd0a71b37ce76"
-SRCBRANCH_mv-ddr = "mv_ddr-armada-17.06"
+SRCREV_mv-ddr = "7ffc0a58074b6325b87c45bd67c445f0988b092f"
+SRCBRANCH_mv-ddr = "mv_ddr-armada-17.08"
 
 SRCREV_FORMAT = "uboot"
 
