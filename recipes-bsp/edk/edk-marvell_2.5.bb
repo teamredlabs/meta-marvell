@@ -3,7 +3,7 @@ DESCRIPTION = "EDK II Marvell"
 LICENSE = "BSD"
 LIC_FILES_CHKSUM = "file://OpenPlatformPkg/License.txt;md5=323ef31bed34c64980e68243b53e40e2"
 
-DEPENDS = "ossp-uuid-native"
+DEPENDS = "ossp-uuid-native iasl-native"
 
 inherit deploy
 
@@ -17,6 +17,7 @@ SRC_URI = " \
     file://Remove-bashism.patch \
     file://Remove-Werror-from-CFLAGS-to-avoid-build-errors-with.patch \
     file://vrf-update-MAX_PATH.patch \
+    file://BaseTools-Source-C-Makefiles-header.makefile-Add-nat.patch \
     file://startup.nsh \
 "
 
@@ -24,6 +25,8 @@ PV .= "+git${SRCPV}"
 
 export CC="${BUILD_CC} ${BUILD_CFLAGS} ${BUILD_LDFLAGS}"
 export CXX="${BUILD_CXX} ${BUILD_CXXFLAGS} ${BUILD_LDFLAGS}"
+export STAGING_INCDIR_NATIVE
+export STAGING_LIBDIR_NATIVE
 
 # Toolchain path
 export GCC49_AARCH64_PREFIX="${TARGET_PREFIX}"
