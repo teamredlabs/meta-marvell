@@ -5,6 +5,8 @@ LIC_FILES_CHKSUM = "file://OpenPlatformPkg/License.txt;md5=323ef31bed34c64980e68
 
 DEPENDS = "ossp-uuid-native iasl-native"
 
+PROVIDES += "edk"
+
 inherit deploy
 
 S = "${WORKDIR}/git"
