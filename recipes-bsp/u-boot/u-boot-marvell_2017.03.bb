@@ -12,8 +12,8 @@ SRC_URI = " \
     git://git@github.com/MarvellEmbeddedProcessors/u-boot-marvell;branch=${SRCBRANCH};protocol=https \
 "
 
-SRCBRANCH = "u-boot-2017.03-armada-17.08"
-SRCREV = "5d1a40f36f00a65919dce43b7210b98c47dea96a"
+SRCBRANCH = "u-boot-2017.03-armada-17.10"
+SRCREV = "e7c0ff40f1a7d7ce49583ba63283c1f71a436a58"
 
 S = "${WORKDIR}/git"
 
