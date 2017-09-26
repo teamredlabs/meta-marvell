@@ -1,7 +1,7 @@
 require recipes-bsp/edk/edk-marvell.inc
 
-SRCREV = "00eb373cb2b6ed36f9c034a3112e50a56f3320ea"
-SRCBRANCH = "uefi-armada-17.08"
+SRCREV = "07d47c9c71aff89c9d19c8fc1b74e6e1c2986076"
+SRCBRANCH = "uefi-armada-17.10"
 SRC_URI = " \
     git://git@github.com/MarvellEmbeddedProcessors/uefi-marvell.git;branch=${SRCBRANCH};protocol=https \
     file://Change-header-path-and-link-name-to-use-OSSP-uuid.patch \
