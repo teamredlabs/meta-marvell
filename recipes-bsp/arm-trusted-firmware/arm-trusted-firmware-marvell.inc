@@ -5,6 +5,7 @@ LIC_FILES_CHKSUM = "file://license.md;md5=829bdeb34c1d9044f393d5a16c068371"
 
 DEPENDS = " \
     ${@bb.utils.contains("MACHINE_FEATURES", "edk-efi", "edk", "virtual/bootloader",d)} \
+    openssl-native \
 "
 
 DEPENDS_append_armada37xx = "lib32-gcc-cross-arm unzip-native"
