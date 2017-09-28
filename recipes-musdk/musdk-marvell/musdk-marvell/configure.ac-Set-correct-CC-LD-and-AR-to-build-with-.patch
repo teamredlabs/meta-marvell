@@ -1,0 +1,33 @@
+From 108ced22ec5be41e27974e43f6faac2f4a28ba65 Mon Sep 17 00:00:00 2001
+From: Fabio Berton <fabio.berton@ossystems.com.br>
+Date: Thu, 8 Jun 2017 10:29:27 -0300
+Subject: [PATCH] configure.ac: Set correct CC, LD and AR to build with Yocto
+Organization: O.S. Systems Software LTDA.
+
+Upstream-Status: Inappropriate [embedded specific]
+
+Signed-off-by: Fabio Berton <fabio.berton@ossystems.com.br>
+---
+ configure.ac | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index aa9698d..4152172 100755
+--- a/configure.ac
++++ b/configure.ac
+@@ -151,9 +151,9 @@ CFLAGS+="-pthread "
+ CFLAGS+="$MUSDK_CFLAGS $SAM_CFLAGS"
+ LDFLAGS+="$SAM_LDFLAGS"
+ LIBS+="$SAM_LIBS"
+-CC=${CROSS_COMPILE}gcc
+-LD=${CROSS_COMPILE}ld
+-AR=${CROSS_COMPILE}ar
++CC=${CC}
++LD=${LD}
++AR=${AR}
+ 
+ # define LIBTOOL (for libraries)
+ LT_INIT
+-- 
+2.11.0
+
