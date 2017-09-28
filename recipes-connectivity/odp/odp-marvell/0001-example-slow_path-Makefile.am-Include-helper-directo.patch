@@ -1,0 +1,28 @@
+From cc10d916f8d42b9769fb1be704d5496354dc592c Mon Sep 17 00:00:00 2001
+From: Fabio Berton <fabio.berton@ossystems.com.br>
+Date: Wed, 8 Feb 2017 09:54:24 -0200
+Subject: [PATCH] example/slow_path/Makefile.am: Include helper directory to
+ CFLAGS
+Organization: O.S. Systems Software LTDA.
+
+Signed-off-by: Fabio Berton <fabio.berton@ossystems.com.br>
+---
+ example/slow_path/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/example/slow_path/Makefile.am b/example/slow_path/Makefile.am
+index a217ba1..9a140e4 100644
+--- a/example/slow_path/Makefile.am
++++ b/example/slow_path/Makefile.am
+@@ -2,7 +2,7 @@ include $(top_srcdir)/example/Makefile.inc
+ 
+ bin_PROGRAMS = odp_slow_path$(EXEEXT)
+ odp_slow_path_LDFLAGS = $(AM_LDFLAGS) -static
+-odp_slow_path_CFLAGS = $(AM_CFLAGS) -I${top_srcdir}/example
++odp_slow_path_CFLAGS = $(AM_CFLAGS) -I${top_srcdir}/example -I${top_srcdir}/helper
+ 
+ dist_odp_slow_path_SOURCES = odp_slow_path.c
+ 
+-- 
+2.11.0
+
