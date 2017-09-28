@@ -20,3 +20,13 @@ SRCBRANCH_bin-marvell = "binaries-marvell-armada-17.10"
 
 SRCREV_A3700-utils = "af63f95009b516718be0fd0499701e8609f6bda9"
 SRCBRANCH_A3700-utils = "A3700_utils-armada-17.10"
+
+# Export path to a70xx binary file
+do_compile_prepend_armada70xx() {
+    export SCP_BL2="${WORKDIR}/bin-marvell/mrvl_scp_bl2_7040.img"
+}
+
+# Export path to a80xx binary file
+do_compile_prepend_armada80xx() {
+    export SCP_BL2="${WORKDIR}/bin-marvell/mrvl_scp_bl2_8040.img"
+}

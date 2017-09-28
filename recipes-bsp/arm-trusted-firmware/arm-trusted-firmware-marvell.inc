@@ -58,16 +58,6 @@ EXTRA_OEMAKE += " \
 # ARM 32-bit cross compiler, which is required by building WTMI image for CM3.
 export CROSS_CM3 = "${STAGING_BINDIR_NATIVE}/arm-marvellmllib32-linux-gnueabi/arm-marvellmllib32-linux-gnueabi-"
 
-# Export path to a70xx binary file
-do_compile_prepend_armada70xx() {
-    export SCP_BL2="${WORKDIR}/bin-marvell/mrvl_scp_bl2_7040.img"
-}
-
-# Export path to a80xx binary file
-do_compile_prepend_armada80xx() {
-    export SCP_BL2="${WORKDIR}/bin-marvell/mrvl_scp_bl2_8040.img"
-}
-
 do_compile_prepend_armada37xx() {
     export WTP=${WORKDIR}/A3700-utils/
 }
