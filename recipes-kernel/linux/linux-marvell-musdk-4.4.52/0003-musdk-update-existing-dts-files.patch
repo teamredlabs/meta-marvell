@@ -1,0 +1,67 @@
+From ea0103bef2ae37dcf9c5cf6e8e3dc4f96591571e Mon Sep 17 00:00:00 2001
+From: Lior Amsalem <alior@marvell.com>
+Date: Thu, 6 Jul 2017 11:16:11 +0300
+Subject: [PATCH 3/5] musdk: update existing dts files
+
+Change-Id: I7f386b72ae4a87685d10839337c92a759c9e6e07
+Signed-off-by: Lior Amsalem <alior@marvell.com>
+---
+ arch/arm64/boot/dts/marvell/armada-37xx.dtsi      | 2 ++
+ arch/arm64/boot/dts/marvell/armada-7040-db.dts    | 1 +
+ arch/arm64/boot/dts/marvell/armada-8040-db.dts    | 2 ++
+ arch/arm64/boot/dts/marvell/armada-8040-mcbin.dts | 1 +
+ 4 files changed, 6 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/marvell/armada-37xx.dtsi b/arch/arm64/boot/dts/marvell/armada-37xx.dtsi
+index e185344..f174245 100644
+--- a/arch/arm64/boot/dts/marvell/armada-37xx.dtsi
++++ b/arch/arm64/boot/dts/marvell/armada-37xx.dtsi
+@@ -49,6 +49,8 @@
+ #include <dt-bindings/phy/phy-utmi-mvebu.h>
+ #include <dt-bindings/phy/phy-comphy-mvebu.h>
+ 
++#include "musdk-armada-37xx.dtsi"
++
+ / {
+ 	model = "Marvell Armada 37xx SoC";
+ 	compatible = "marvell,armada3700";
+diff --git a/arch/arm64/boot/dts/marvell/armada-7040-db.dts b/arch/arm64/boot/dts/marvell/armada-7040-db.dts
+index baf2e2f..ed0aeee 100644
+--- a/arch/arm64/boot/dts/marvell/armada-7040-db.dts
++++ b/arch/arm64/boot/dts/marvell/armada-7040-db.dts
+@@ -46,6 +46,7 @@
+  */
+ 
+ #include "armada-7040-db.dtsi"
++#include "musdk-armada-7040-db.dtsi"
+ 
+ / {
+ 	model = "Marvell Armada-7040 development board default (A) setup";
+diff --git a/arch/arm64/boot/dts/marvell/armada-8040-db.dts b/arch/arm64/boot/dts/marvell/armada-8040-db.dts
+index 5cbb5b5..71f8d38 100644
+--- a/arch/arm64/boot/dts/marvell/armada-8040-db.dts
++++ b/arch/arm64/boot/dts/marvell/armada-8040-db.dts
+@@ -47,6 +47,8 @@
+  */
+ 
+ #include "armada-8040-db.dtsi"
++#include "musdk-armada-8040-db.dtsi"
++
+ 
+ / {
+ 	model = "Marvell Armada-8040 development board default (A) setup";
+diff --git a/arch/arm64/boot/dts/marvell/armada-8040-mcbin.dts b/arch/arm64/boot/dts/marvell/armada-8040-mcbin.dts
+index a175932..2743564 100644
+--- a/arch/arm64/boot/dts/marvell/armada-8040-mcbin.dts
++++ b/arch/arm64/boot/dts/marvell/armada-8040-mcbin.dts
+@@ -45,6 +45,7 @@
+  */
+ 
+ #include "armada-8040.dtsi"
++#include "musdk-armada-8040-mcbin.dtsi"
+ 
+ / {
+ 	model = "Marvell 8040 MACHIATOBin";
+-- 
+1.9.1
+
