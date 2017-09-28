@@ -1,0 +1,35 @@
+From 4c104d38ef45830bda8d05c483ceb65af6649aa6 Mon Sep 17 00:00:00 2001
+From: Fabio Berton <fabio.berton@ossystems.com.br>
+Date: Thu, 26 Jan 2017 14:43:33 -0200
+Subject: [PATCH] scripts/git_hash.sh: Add --always argument to git describe
+Organization: O.S. Systems Software LTDA.
+
+Git describe --always option show uniquely abbreviated commit object
+as fallback, this prevent error:
+
+configure.ac:7: error: AC_INIT should be called with package and
+version arguments
+
+Upstream-Status: Pending
+
+Signed-off-by: Fabio Berton <fabio.berton@ossystems.com.br>
+---
+ scripts/git_hash.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/git_hash.sh b/scripts/git_hash.sh
+index ccd62ab..30a9573 100755
+--- a/scripts/git_hash.sh
++++ b/scripts/git_hash.sh
+@@ -7,7 +7,7 @@ fi
+ ROOTDIR=${1}
+ 
+ if [ -d ${ROOTDIR}/.git ]; then
+-	hash=$(git --git-dir=${ROOTDIR}/.git describe | tr -d "\n")
++	hash=$(git --git-dir=${ROOTDIR}/.git describe --always | tr -d "\n")
+ 	if [[ $(git --git-dir=${ROOTDIR}/.git diff --shortstat 2> /dev/null \
+ 		| tail -n1) != "" ]]; then
+ 		dirty=.dirty
+-- 
+2.11.0
+
