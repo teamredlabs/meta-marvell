@@ -12,7 +12,7 @@ SRC_URI = " \
 SRCREV_atf = "13f2984f0af30776eb71938bcdf06b971297cdad"
 SRCBRANCH_atf = "atf-v1.3-armada-17.10"
 
-SRCREV_mv-ddr = "24dda1fb8278aa8abca69197bfea3a2bbb163494"
+SRCREV_mv-ddr = "656440a9690f3d07be9e3d2c39d7cf56fd96eb7b"
 SRCBRANCH_mv-ddr = "mv_ddr-armada-17.10"
 
 SRCREV_bin-marvell = "0dabe23b956420b0928d337d635f0cd5646c33d0"
