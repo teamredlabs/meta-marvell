@@ -1,0 +1,33 @@
+From a38bf8248beb7c5c210e2bb34e2f633614dea50a Mon Sep 17 00:00:00 2001
+From: Victor Axelrod <victora@marvell.com>
+Date: Tue, 31 Oct 2017 14:27:45 +0200
+Subject: [PATCH 1/1] configure.ac: Set correct CC, LD, AR, and CPP to build
+ with Yocto
+
+Upstream-Status: Inappropriate [embedded specific]
+
+Signed-off-by: Victor Axelrod <victora@marvell.com>
+---
+ configure.ac | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index bcc55e2..5ed1b4b 100755
+--- a/configure.ac
++++ b/configure.ac
+@@ -46,12 +46,6 @@ AM_CFLAGS="$AM_CFLAGS -Wmissing-declarations -Wold-style-definition -Wpointer-ar
+ AM_CFLAGS="$AM_CFLAGS -Wcast-align -Wnested-externs -Wcast-qual -Wformat-nonliteral"
+ AM_CFLAGS="$AM_CFLAGS -Wformat-security -Wundef -Wwrite-strings"
+ 
+-#use cross compiler
+-CC=${CROSS_COMPILE}gcc
+-LD=${CROSS_COMPILE}ld
+-AR=${CROSS_COMPILE}ar
+-CPP=${CROSS_COMPILE}cpp
+-
+ # define LIBTOOL (for libraries)
+ LT_INIT
+ 
+-- 
+2.7.4
+
