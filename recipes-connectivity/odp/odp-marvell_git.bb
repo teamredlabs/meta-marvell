@@ -1,6 +1,8 @@
-DESCRIPTION = "OpenDataPlane (ODP) provides a data plane application \
-programming environment that is easy to use, high performance, and portable \
-between networking SoCs."
+SUMMARY = "Marvell ODP-MUSDK"
+DESCRIPTION = "Marvell ODP-MUSDK (OpenDataPlane over Marvell User Space SDK) \
+               implementation for the Armada family drivers based on the \
+               standard ODP linux-generic platform with the changes matching \
+               the MUSDK architecture"
 HOMEPAGE = "https://github.com/MarvellEmbeddedProcessors/odp-marvell"
 SECTION = "networking"
 LICENSE = "BSD-3-Clause"
