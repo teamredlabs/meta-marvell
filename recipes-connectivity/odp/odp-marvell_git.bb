@@ -10,7 +10,7 @@ do_configure[depends] += "netmap-marvell:do_populate_sysroot"
 
 SRCBRANCH = "odp-armada-17.10"
 SRC_URI = " \
-    git://git@github.com/MarvellEmbeddedProcessors/odp-marvell.git;branch=${SRCBRANCH};protocol=https \
+    git://github.com/MarvellEmbeddedProcessors/odp-marvell.git;branch=${SRCBRANCH};protocol=https \
     file://0001-example-slow_path-Makefile.am-Include-helper-directo.patch \
 "
 
