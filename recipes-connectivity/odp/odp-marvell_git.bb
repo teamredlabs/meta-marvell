@@ -1,33 +1,41 @@
 DESCRIPTION = "OpenDataPlane (ODP) provides a data plane application \
 programming environment that is easy to use, high performance, and portable \
 between networking SoCs."
-
+HOMEPAGE = "https://github.com/MarvellEmbeddedProcessors/odp-marvell"
+SECTION = "networking"
 LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=4ccfa994aa96974cfcd39a59faee20a2"
-
-DEPENDS = "cunit libpcap netmap-marvell openssl"
-do_configure[depends] += "netmap-marvell:do_populate_sysroot"
+DEPENDS = "cunit libpcap musdk-marvell openssl"
+PROVIDES += "odp"
 
 SRCBRANCH = "odp-armada-17.10"
+SRCREV = "d5274f339b9016fbb89694c900c3ce07b75c2977"
 SRC_URI = " \
     git://github.com/MarvellEmbeddedProcessors/odp-marvell.git;branch=${SRCBRANCH};protocol=https \
     file://0001-example-slow_path-Makefile.am-Include-helper-directo.patch \
 "
 
-SRCREV = "d5274f339b9016fbb89694c900c3ce07b75c2977"
-
 S = "${WORKDIR}/git"
 
-inherit autotools
+inherit autotools-brokensep
 
-DISABLE_STATIC = ""
-
-# We need to pass netmap-marvell directory path.
 EXTRA_OECONF += " \
-    --with-netmap-path=${STAGING_INCDIR}/net \
+    --with-platform=linux-musdk \
+    --with-sdk-install-path=${STAGING_INCDIR}/musdk \
+    --enable-mvpp2-support \
+    --with-openssl-path=${STAGING_INCDIR}/openssl \
 "
 
-RDEPENDS_${PN} = "bash libcrypto"
+RDEPENDS_${PN} = " \
+    mvpp2x-sysfs \
+"
+RRECOMENDS_${PN} = " \
+    kernel-module-marvell-musdk-uio \
+    kernel-module-marvell-musdk-pp2 \
+    kernel-module-marvell-musdk-sam \
+"
+RPROVIDES_${PN} += "odp"
+RREPLACES_${PN} += "odp"
+RCONFLICTS_${PN} += "odp"
 
 COMPATIBLE_MACHINE = "(armada70xx|armada80xx)"
-
