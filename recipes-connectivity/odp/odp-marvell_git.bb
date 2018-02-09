@@ -29,6 +29,7 @@ EXTRA_OECONF += " \
 "
 
 RDEPENDS_${PN} = " \
+    bash \
     mvpp2x-sysfs \
 "
 RRECOMENDS_${PN} = " \
