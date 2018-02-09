@@ -7,7 +7,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=fbe4957c430eed6cc20521d4eb429fae"
 
 PROVIDES += "ofp"
 
-DEPENDS = "odp-marvell openssl"
+DEPENDS = "odp openssl"
 
 SRCBRANCH = "ofp-armada-17.10"
 SRCREV = "08ffe8099c51081cb84251175b88e309f1562fd7"
