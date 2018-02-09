@@ -7,7 +7,7 @@ HOMEPAGE = "https://github.com/MarvellEmbeddedProcessors/odp-marvell"
 SECTION = "networking"
 LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=4ccfa994aa96974cfcd39a59faee20a2"
-DEPENDS = "cunit libpcap musdk-marvell openssl"
+DEPENDS = "cunit libpcap musdk openssl"
 PROVIDES += "odp"
 
 SRCBRANCH = "odp-armada-17.10"
