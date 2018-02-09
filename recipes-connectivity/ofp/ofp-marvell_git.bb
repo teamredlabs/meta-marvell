@@ -5,6 +5,8 @@ developers need to cope with today’s fast-paced network."
 LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=fbe4957c430eed6cc20521d4eb429fae"
 
+PROVIDES += "ofp"
+
 DEPENDS = "odp-marvell openssl"
 
 SRCBRANCH = "ofp-armada-17.10"
