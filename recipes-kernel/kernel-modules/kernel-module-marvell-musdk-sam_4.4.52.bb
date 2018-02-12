@@ -1,5 +1,7 @@
 require recipes-kernel/kernel-modules/kernel-module-marvell-musdk.inc
 
+RPROVIDES_${PN} += "kernel-module-marvell-musdk-sam"
+
 KERNEL_MODULES_META_PACKAGE = "${PN}"
 
 do_compile[dirs] = "${S}/modules/sam"
