@@ -17,9 +17,10 @@ RREPLACES_${PN} += "musdk"
 RCONFLICTS_${PN} += "musdk"
 
 RDEPENDS_${PN} += " \
-    kernel-module-marvell-musdk-uio \
+    kernel-module-marvell-musdk-dmax2 \
     kernel-module-marvell-musdk-pp2 \
     kernel-module-marvell-musdk-sam \
+    kernel-module-marvell-musdk-uio \
 "
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
