@@ -7,7 +7,7 @@ HOMEPAGE = "https://github.com/MarvellEmbeddedProcessors/odp-marvell"
 SECTION = "networking"
 LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=4ccfa994aa96974cfcd39a59faee20a2"
-DEPENDS = "cunit libpcap musdk openssl"
+DEPENDS = "autoconf-archive cunit libpcap musdk openssl"
 PROVIDES += "odp"
 
 SRCBRANCH = "odp-armada-17.10"
@@ -21,21 +21,21 @@ S = "${WORKDIR}/git"
 
 inherit autotools-brokensep
 
+DISABLE_STATIC = ""
+
 EXTRA_OECONF += " \
     --with-platform=linux-musdk \
     --with-sdk-install-path=${STAGING_INCDIR}/musdk \
     --enable-mvpp2-support \
     --with-openssl-path=${STAGING_INCDIR}/openssl \
+    --enable-abi-compat=no \
+    --enable-mvsam-support \
 "
 
 RDEPENDS_${PN} = " \
     bash \
     mvpp2x-sysfs \
-"
-RRECOMENDS_${PN} = " \
-    kernel-module-marvell-musdk-uio \
-    kernel-module-marvell-musdk-pp2 \
-    kernel-module-marvell-musdk-sam \
+    musdk \
 "
 RPROVIDES_${PN} += "odp"
 RREPLACES_${PN} += "odp"
