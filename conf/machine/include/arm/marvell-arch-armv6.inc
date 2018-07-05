@@ -5,7 +5,7 @@ TUNECONFLICTS[armv6] = "armv4 armv5"
 TUNE_CCARGS .= "${@bb.utils.contains('TUNE_FEATURES', 'armv6', ' -march=armv6', '', d)}"
 MACHINEOVERRIDES =. "${@bb.utils.contains('TUNE_FEATURES', 'armv6', 'armv6:', '' ,d)}"
 
-require conf/machine/include/arm/arch-armv5-dsp.inc
+require conf/machine/include/arm/marvell-arch-armv5-dsp.inc
 
 # Little Endian
 AVAILTUNES += "armv6-novfp armv6t-novfp armv6 armv6t armv6hf armv6thf"

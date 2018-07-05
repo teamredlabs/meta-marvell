@@ -2,7 +2,7 @@
 # 'vfp', 'vfpv3', 'vfpv3-fp16', 'vfpv3-d16', 'vfpv3-d16-fp16', 'vfpv3xd', 'vfpv3xd-fp16', 'neon', 'neon-fp16', 'vfpv4', 'vfpv4-d16', 'fpv4-sp-d16', 'neon-vfpv4', 'fpv5-d16', 'fpv5-sp-d16', 'fp-armv8', 'neon-fp-armv8', and 'crypto-neon-fp-armv8'
 
 # Only some combinations are supported here.
-# 'vfp', -mfloat-abi parameter and 'hf' suffix is implemented in feature-arm-vfp.inc
+# 'vfp', -mfloat-abi parameter and 'hf' suffix is implemented in marvell-feature-arm-vfp.inc
 
 TUNEVALID[neon] = "Enable Neon SIMD accelerator unit."
 TUNE_CCARGS_MFPU .= "${@bb.utils.contains('TUNE_FEATURES', 'neon', ' neon', '', d)}"

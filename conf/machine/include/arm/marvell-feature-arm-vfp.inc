@@ -1,5 +1,5 @@
 # This is only for VFPv1 or VFPv2, other vfp* tunes are defined in
-# feature-arm-neon.inc, because they are available only for armv7*
+# marvell-feature-arm-neon.inc, because they are available only for armv7*
 # and this .inc file is included from armv5
 
 TUNEVALID[vfp] = "Enable Vector Floating Point (vfp) unit."

@@ -1,18 +1,18 @@
-# Provides the Marvell Armada 70xx common settings
+# Provides the Marvell Armada 80xx common settings
 
-require conf/machine/include/arm/arch-arm64.inc
+require conf/machine/include/arm/marvell-arch-arm64.inc
 
 MACHINE_ENDIANNESS ?= "le"
 
-DEFAULTTUNE_armada70xx ?= "${@bb.utils.contains("MACHINE_ENDIANNESS", "le", "aarch64", "aarch64_be", d)}"
+DEFAULTTUNE_armada80xx ?= "${@bb.utils.contains("MACHINE_ENDIANNESS", "le", "aarch64", "aarch64_be", d)}"
 
-MACHINEOVERRIDES =. "armada70xx:"
+MACHINEOVERRIDES =. "armada80xx:"
 
 PREFERRED_PROVIDER_u-boot-script ??= "u-boot-script-marvell"
 
 IMAGE_FSTYPES += "tar.bz2 wic.gz"
 
-WKS_FILES_append = " armada70xx.wks"
+WKS_FILES_append = " armada80xx.wks"
 
 # Install wic dependencies
 IMAGE_DEPENDS_wic_append = " \

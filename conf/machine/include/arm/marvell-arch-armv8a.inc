@@ -18,7 +18,7 @@ TUNE_CCARGS .= "${@bb.utils.contains("TUNE_FEATURES", "fp-armv8", bb.utils.conta
 
 MACHINEOVERRIDES =. "${@bb.utils.contains("TUNE_FEATURES", "armv8a", "armv8a:", "" ,d)}"
 
-require conf/machine/include/arm/arch-armv7ve.inc
+require conf/machine/include/arm/marvell-arch-armv7ve.inc
 
 # Little Endian base configs
 AVAILTUNES += "armv8a armv8at armv8a-neon armv8at-neon armv8a-vfpv4 armv8at-vfpv4 armv8a-vfpv4-neon armv8at-vfpv4-neon armv8a-fp-armv8 armv8at-fp-armv8 armv8a-fp-armv8-neon armv8at-fp-armv8-neon armv8a-crypto-fp-armv8-neon armv8at-crypto-fp-armv8-neon"

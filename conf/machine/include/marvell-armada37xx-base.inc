@@ -1,6 +1,6 @@
 # Provides the Marvell Armada 37xx common settings
 
-require conf/machine/include/arm/arch-arm64.inc
+require conf/machine/include/arm/marvell-arch-arm64.inc
 
 require conf/multilib.conf
 MULTILIBS = "multilib:lib32"

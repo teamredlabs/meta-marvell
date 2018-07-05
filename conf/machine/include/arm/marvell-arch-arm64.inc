@@ -1,6 +1,6 @@
 DEFAULTTUNE ?= "aarch64"
 
-require conf/machine/include/arm/arch-armv8a.inc
+require conf/machine/include/arm/marvell-arch-armv8a.inc
 
 TUNEVALID[aarch64] = "Enable instructions for aarch64"
 
@@ -24,7 +24,7 @@ TUNE_PKGARCH_64 = "aarch64${ARMPKGSFX_ENDIAN_64}"
 ABIEXTENSION_64 = ""
 TARGET_FPU_64 = ""
 
-# Duplicated from arch-arm.inc
+# Duplicated from marvell-arch-arm.inc
 TUNE_ARCH_32 = "${@bb.utils.contains('TUNE_FEATURES', 'bigendian', 'armeb', 'arm', d)}"
 TUNE_PKGARCH_32 = "${ARMPKGARCH}${ARMPKGSFX_THUMB}${ARMPKGSFX_DSP}${ARMPKGSFX_EABI}${ARMPKGSFX_ENDIAN}${ARMPKGSFX_FPU}"
 ABIEXTENSION_32 = "eabi"
