@@ -13,8 +13,6 @@ inherit kernel
 inherit marvell-kernel-config-fragments
 inherit marvell-kernel-localversion
 
-require recipes-kernel/linux/linux-dtb.inc
-
 # Default repositories for each SoC family
 SRC_SRC_URI = "UNDEFINED"
 SRCBRANCH = "UNDEFINED"
