@@ -20,6 +20,20 @@ MACHINE_ESSENTIAL_EXTRA_RDEPENDS += " \
 
 IMAGE_FSTYPES += "tar.bz2 ext2 wic.gz"
 
+WKS_FILES_append = " armada38x.wks"
+
+# Install wic dependencies
+IMAGE_DEPENDS_wic_append = " \
+    dosfstools-native \
+    mtools-native \
+    ${@bb.utils.contains("MACHINE_FEATURES", "edk-efi", "edk-marvell", "", d)} \
+"
+
+IMAGE_BOOT_FILES = "\
+    Image;${@bb.utils.contains("MACHINE_FEATURES", "edk-efi", "Linux.efi", "Image", d)}\
+    ${@bb.utils.contains("MACHINE_FEATURES", "edk-efi", "startup.nsh", "", d)} \
+"
+
 SERIAL_CONSOLE = "115200 ttyS0"
 
 PREFERRED_PROVIDER_virtual/kernel ?= "linux-marvell"

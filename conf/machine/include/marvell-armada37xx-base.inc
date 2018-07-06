@@ -16,6 +16,11 @@ PREFERRED_PROVIDER_u-boot-script ??= "u-boot-script-marvell"
 
 IMAGE_FSTYPES += "tar.bz2"
 
+IMAGE_BOOT_FILES = "\
+    Image;${@bb.utils.contains("MACHINE_FEATURES", "edk-efi", "Linux.efi", "Image", d)}\
+    ${@bb.utils.contains("MACHINE_FEATURES", "edk-efi", "startup.nsh", "", d)} \
+"
+
 SERIAL_CONSOLE = "115200 ttyMV0"
 
 PREFERRED_PROVIDER_virtual/kernel ??= "linux-marvell"
