@@ -18,6 +18,14 @@ SRCREV = "06ad760c886d4e129536ac0577875bcb0117039c"
 
 S = "${WORKDIR}/git"
 
+do_fix_makefile () {
+    sed -i $(grep -n '^EXTRAVERSION =' ${S}/Makefile | awk '{split($0,a,":"); print a[1]}')"s/.*/EXTRAVERSION = -${PR}/" ${S}/Makefile
+}
+
+python() {
+    bb.build.addtask('do_fix_makefile', 'do_configure', 'do_patch', d)
+}
+
 inherit marvell-u-boot-localversion
 
 EXTRA_OEMAKE += "DEVICE_TREE=${UBOOT_DEVICE_TREE}"
