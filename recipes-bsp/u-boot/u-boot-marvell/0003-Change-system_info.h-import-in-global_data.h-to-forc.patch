@@ -1,0 +1,25 @@
+From 662a6c64492c4f5ff921c94b14694393a6fe68bf Mon Sep 17 00:00:00 2001
+From: "John Lawrence M. Penafiel" <penafieljlm@gmail.com>
+Date: Thu, 12 Jul 2018 02:28:15 +0800
+Subject: [PATCH] Change system_info.h import in global_data.h to force import
+ from build directory
+
+---
+ arch/arm/include/asm/global_data.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm/include/asm/global_data.h b/arch/arm/include/asm/global_data.h
+index 995cb19fc0..d0cd3c14f6 100644
+--- a/arch/arm/include/asm/global_data.h
++++ b/arch/arm/include/asm/global_data.h
+@@ -9,7 +9,7 @@
+ #define __ASM_GBL_DATA_H
+ 
+ #ifdef CONFIG_MVEBU_SYS_INFO
+-#include "arch/system_info.h"
++#include "asm/arch/system_info.h"
+ #endif
+ 
+ /* Architecture-specific global data */
+-- 
+

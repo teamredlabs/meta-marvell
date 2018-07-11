@@ -9,8 +9,11 @@ RPROVIDES_${PN} += "u-boot"
 
 DEPENDS_append = " dtc-native"
 
+FILESEXTRAPATHS_prepend := "${THISDIR}/u-boot-marvell:"
+
 SRC_URI = " \
     git://git@github.com/MarvellEmbeddedProcessors/u-boot-marvell;branch=${SRCBRANCH};protocol=https \
+    file://0003-Change-system_info.h-import-in-global_data.h-to-forc.patch \
 "
 
 SRCBRANCH = "u-boot-2017.03-armada-17.10"
