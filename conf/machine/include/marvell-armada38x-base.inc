@@ -9,6 +9,9 @@ MACHINEOVERRIDES =. "armada38x:"
 PREFERRED_PROVIDER_u-boot ??= "u-boot-marvell"
 PREFERRED_PROVIDER_virtual/bootloader ??= "u-boot-marvell"
 
+PREFERRED_PROVIDER_u-boot-fw-utils ?= "u-boot-fw-utils-marvell"
+PREFERRED_RPROVIDER_u-boot-fw-utils ?= "u-boot-fw-utils-marvell"
+
 PREFERRED_PROVIDER_u-boot-script ??= "u-boot-script-marvell"
 
 # Packages essential for booting

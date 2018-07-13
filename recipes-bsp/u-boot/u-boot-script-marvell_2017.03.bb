@@ -1,10 +1,12 @@
 LICENSE = "GPLv2+"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=0adaf0d6160d61a8467973ac69edd367"
-DEPENDS = "u-boot-mkimage-native"
+DEPENDS += "u-boot-mkimage-native"
+
+PROVIDES += "u-boot"
+RPROVIDES_${PN} += "u-boot-script"
 
 SRC_URI = "file://bootscript \
            file://LICENSE"
-
 S = "${WORKDIR}/"
 
 inherit deploy
@@ -38,8 +40,6 @@ do_install () {
 addtask deploy after do_install before do_build
 
 do_compile[noexec] = "1"
-
-RPROVIDES_${PN} += "u-boot-script"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 COMPATIBLE_MACHINE = "(armada38x)"
