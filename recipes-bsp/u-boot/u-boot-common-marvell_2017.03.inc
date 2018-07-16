@@ -6,6 +6,7 @@ SECTION = "bootloaders"
 FILESEXTRAPATHS_prepend := "${THISDIR}/u-boot-common-marvell:"
 SRC_URI = " \
     git://git@github.com/MarvellEmbeddedProcessors/u-boot-marvell;branch=${SRCBRANCH};protocol=https \
+    file://0001-Added-override-directive-to-env-Makefile.patch \
     file://0001-Change-system_info.h-import-in-global_data.h-to-forc.patch \
 "
 SRCBRANCH = "u-boot-2017.03-armada-17.10"

@@ -1,0 +1,24 @@
+From 293ee11cae64a72d6c7d2a60502843a8a25dfd6b Mon Sep 17 00:00:00 2001
+From: "John Lawrence M. Penafiel" <penafieljlm@gmail.com>
+Date: Mon, 16 Jul 2018 08:50:07 +0800
+Subject: [PATCH] Added override directive to env Makefile
+
+---
+ tools/env/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/env/Makefile b/tools/env/Makefile
+index 38ad118..95b28c0 100644
+--- a/tools/env/Makefile
++++ b/tools/env/Makefile
+@@ -8,7 +8,7 @@
+ # fw_printenv is supposed to run on the target system, which means it should be
+ # built with cross tools. Although it may look weird, we only replace "HOSTCC"
+ # with "CC" here for the maximum code reuse of scripts/Makefile.host.
+-HOSTCC = $(CC)
++override HOSTCC = $(CC)
+ 
+ # Compile for a hosted environment on the target
+ HOST_EXTRACFLAGS  = $(patsubst -I%,-idirafter%, $(filter -I%, $(UBOOTINCLUDE))) \
+-- 
+
