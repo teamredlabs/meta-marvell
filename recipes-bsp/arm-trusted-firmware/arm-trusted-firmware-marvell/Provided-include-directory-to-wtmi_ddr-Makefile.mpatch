@@ -1,0 +1,33 @@
+From 1f7c90e253602939d687ae5984761284e660f3d0 Mon Sep 17 00:00:00 2001
+From: "John Lawrence M. Penafiel" <penafieljlm@gmail.com>
+Date: Fri, 20 Jul 2018 00:52:22 +0800
+Subject: [PATCH] Provided include directory to wtmi_ddr Makefile
+
+---
+ ddr/wtmi_ddr/Makefile | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/ddr/wtmi_ddr/Makefile b/ddr/wtmi_ddr/Makefile
+index 7e5311c..2850e0f 100644
+--- a/ddr/wtmi_ddr/Makefile
++++ b/ddr/wtmi_ddr/Makefile
+@@ -33,6 +33,7 @@
+ #*/
+ 
+ CROSS_CM3 ?= arm-linux-gnueabi-
++INCLUDE_CM3 ?= .
+ 
+ CC       = $(CROSS_CM3)gcc
+ AR       = $(CROSS_CM3)ar
+@@ -41,7 +42,7 @@ ECHO     = @echo
+ 
+ CPUOPTS  = -mthumb -mcpu=cortex-m3 -mlittle-endian
+ 
+-INCLUDE  = -I.
++INCLUDE  = -I$(INCLUDE_CM3)
+ 
+ CFLAGS   = -g -gdwarf-2 -Wall -fno-stack-protector $(INCLUDE) -Os $(CPUOPTS)
+ CPPFLAGS =
+-- 
+2.14.2
+
