@@ -14,6 +14,11 @@ MACHINEOVERRIDES =. "armada37xx:"
 
 PREFERRED_PROVIDER_u-boot-script ??= "u-boot-script-marvell"
 
+MACHINE_ESSENTIAL_EXTRA_RDEPENDS += " \
+    kernel-image \
+    kernel-devicetree \
+"
+
 IMAGE_FSTYPES += "tar.bz2"
 
 IMAGE_BOOT_FILES = "\
